@@ -1,0 +1,502 @@
+{
+  "model_name": "Gemini-Multimodal-Frontier",
+  "total_tasks": 40,
+  "total_correct": 10,
+  "overall_accuracy_pct": 25.0,
+  "category_breakdown": {
+    "connectivity_exists": {
+      "total": 10,
+      "correct": 4,
+      "accuracy_pct": 40.0
+    },
+    "component_count": {
+      "total": 10,
+      "correct": 2,
+      "accuracy_pct": 20.0
+    },
+    "shortest_path_length": {
+      "total": 10,
+      "correct": 4,
+      "accuracy_pct": 40.0
+    },
+    "neighbor_id": {
+      "total": 10,
+      "correct": 0,
+      "accuracy_pct": 0.0
+    }
+  },
+  "detailed_results": [
+    {
+      "task_id": "task_001_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "No",
+      "parsed_answer": "No",
+      "reference_answer": "No",
+      "is_correct": true,
+      "latency_seconds": 0.05,
+      "error_category": null,
+      "raw_response": "No"
+    },
+    {
+      "task_id": "task_001_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 2 components of this type visible.",
+      "parsed_answer": 2,
+      "reference_answer": 3,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "There are 2 components of this type visible."
+    },
+    {
+      "task_id": "task_001_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "2 hops",
+      "parsed_answer": 2,
+      "reference_answer": 2,
+      "is_correct": true,
+      "latency_seconds": 0.05,
+      "error_category": null,
+      "raw_response": "2 hops"
+    },
+    {
+      "task_id": "task_001_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "R1",
+      "parsed_answer": "R1",
+      "reference_answer": [
+        "SW1",
+        "C2",
+        "R3"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "R1"
+    },
+    {
+      "task_id": "task_002_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "Yes",
+      "parsed_answer": "Yes",
+      "reference_answer": "Yes",
+      "is_correct": true,
+      "latency_seconds": 0.05,
+      "error_category": null,
+      "raw_response": "Yes"
+    },
+    {
+      "task_id": "task_002_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 1 components of this type visible.",
+      "parsed_answer": 1,
+      "reference_answer": 0,
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "There are 1 components of this type visible."
+    },
+    {
+      "task_id": "task_002_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "3 hops",
+      "parsed_answer": 3,
+      "reference_answer": 1,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_2",
+      "raw_response": "3 hops"
+    },
+    {
+      "task_id": "task_002_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "GND1",
+      "parsed_answer": "GND1",
+      "reference_answer": [
+        "SW1",
+        "BAT1"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "GND1"
+    },
+    {
+      "task_id": "task_003_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "Yes",
+      "parsed_answer": "Yes",
+      "reference_answer": "No",
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "CONNECTIVITY_MISMATCH",
+      "raw_response": "Yes"
+    },
+    {
+      "task_id": "task_003_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 2 components of this type visible.",
+      "parsed_answer": 2,
+      "reference_answer": 1,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "There are 2 components of this type visible."
+    },
+    {
+      "task_id": "task_003_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "3 hops",
+      "parsed_answer": 3,
+      "reference_answer": 3,
+      "is_correct": true,
+      "latency_seconds": 0.05,
+      "error_category": null,
+      "raw_response": "3 hops"
+    },
+    {
+      "task_id": "task_003_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "SW1",
+      "parsed_answer": "SW1",
+      "reference_answer": [
+        "GND2"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "SW1"
+    },
+    {
+      "task_id": "task_004_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "Yes",
+      "parsed_answer": "Yes",
+      "reference_answer": "No",
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "CONNECTIVITY_MISMATCH",
+      "raw_response": "Yes"
+    },
+    {
+      "task_id": "task_004_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 4 components of this type visible.",
+      "parsed_answer": 4,
+      "reference_answer": 2,
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "COUNT_ERROR_DIFF_2",
+      "raw_response": "There are 4 components of this type visible."
+    },
+    {
+      "task_id": "task_004_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "2 hops",
+      "parsed_answer": 2,
+      "reference_answer": 2,
+      "is_correct": true,
+      "latency_seconds": 0.05,
+      "error_category": null,
+      "raw_response": "2 hops"
+    },
+    {
+      "task_id": "task_004_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "C1",
+      "parsed_answer": "C1",
+      "reference_answer": [
+        "L2",
+        "GND1"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "C1"
+    },
+    {
+      "task_id": "task_005_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "No",
+      "parsed_answer": "No",
+      "reference_answer": "Yes",
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "CONNECTIVITY_MISMATCH",
+      "raw_response": "No"
+    },
+    {
+      "task_id": "task_005_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 1 components of this type visible.",
+      "parsed_answer": 1,
+      "reference_answer": 1,
+      "is_correct": true,
+      "latency_seconds": 0.051,
+      "error_category": null,
+      "raw_response": "There are 1 components of this type visible."
+    },
+    {
+      "task_id": "task_005_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "2 hops",
+      "parsed_answer": 2,
+      "reference_answer": 1,
+      "is_correct": false,
+      "latency_seconds": 0.052,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "2 hops"
+    },
+    {
+      "task_id": "task_005_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "GND1",
+      "parsed_answer": "GND1",
+      "reference_answer": [
+        "C1",
+        "BAT2"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "GND1"
+    },
+    {
+      "task_id": "task_006_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "Yes",
+      "parsed_answer": "Yes",
+      "reference_answer": "No",
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "CONNECTIVITY_MISMATCH",
+      "raw_response": "Yes"
+    },
+    {
+      "task_id": "task_006_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 3 components of this type visible.",
+      "parsed_answer": 3,
+      "reference_answer": 2,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "There are 3 components of this type visible."
+    },
+    {
+      "task_id": "task_006_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "2 hops",
+      "parsed_answer": 2,
+      "reference_answer": 3,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "2 hops"
+    },
+    {
+      "task_id": "task_006_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "SW1",
+      "parsed_answer": "SW1",
+      "reference_answer": [
+        "BAT1",
+        "R3",
+        "R2"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "SW1"
+    },
+    {
+      "task_id": "task_007_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "Yes",
+      "parsed_answer": "Yes",
+      "reference_answer": "Yes",
+      "is_correct": true,
+      "latency_seconds": 0.051,
+      "error_category": null,
+      "raw_response": "Yes"
+    },
+    {
+      "task_id": "task_007_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 4 components of this type visible.",
+      "parsed_answer": 4,
+      "reference_answer": 0,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_4",
+      "raw_response": "There are 4 components of this type visible."
+    },
+    {
+      "task_id": "task_007_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "3 hops",
+      "parsed_answer": 3,
+      "reference_answer": 1,
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "COUNT_ERROR_DIFF_2",
+      "raw_response": "3 hops"
+    },
+    {
+      "task_id": "task_007_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "R1",
+      "parsed_answer": "R1",
+      "reference_answer": [
+        "BAT1",
+        "GND1",
+        "SW2",
+        "C2",
+        "SW1"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "R1"
+    },
+    {
+      "task_id": "task_008_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "No",
+      "parsed_answer": "No",
+      "reference_answer": "No",
+      "is_correct": true,
+      "latency_seconds": 0.05,
+      "error_category": null,
+      "raw_response": "No"
+    },
+    {
+      "task_id": "task_008_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 1 components of this type visible.",
+      "parsed_answer": 1,
+      "reference_answer": 1,
+      "is_correct": true,
+      "latency_seconds": 0.056,
+      "error_category": null,
+      "raw_response": "There are 1 components of this type visible."
+    },
+    {
+      "task_id": "task_008_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "2 hops",
+      "parsed_answer": 2,
+      "reference_answer": 2,
+      "is_correct": true,
+      "latency_seconds": 0.05,
+      "error_category": null,
+      "raw_response": "2 hops"
+    },
+    {
+      "task_id": "task_008_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "GND1",
+      "parsed_answer": "GND1",
+      "reference_answer": [
+        "SW3"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "GND1"
+    },
+    {
+      "task_id": "task_009_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "Based on the schematic, they are directly connected.",
+      "parsed_answer": "Yes",
+      "reference_answer": "No",
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "CONNECTIVITY_MISMATCH",
+      "raw_response": "Based on the schematic, they are directly connected."
+    },
+    {
+      "task_id": "task_009_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 1 components of this type visible.",
+      "parsed_answer": 1,
+      "reference_answer": 0,
+      "is_correct": false,
+      "latency_seconds": 0.051,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "There are 1 components of this type visible."
+    },
+    {
+      "task_id": "task_009_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "3 hops",
+      "parsed_answer": 3,
+      "reference_answer": 2,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "3 hops"
+    },
+    {
+      "task_id": "task_009_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "L1",
+      "parsed_answer": "L1",
+      "reference_answer": [
+        "C1"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "L1"
+    },
+    {
+      "task_id": "task_010_conn_direct",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "Based on the schematic, they are directly connected.",
+      "parsed_answer": "Yes",
+      "reference_answer": "No",
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "CONNECTIVITY_MISMATCH",
+      "raw_response": "Based on the schematic, they are directly connected."
+    },
+    {
+      "task_id": "task_010_count",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "There are 4 components of this type visible.",
+      "parsed_answer": 4,
+      "reference_answer": 0,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_4",
+      "raw_response": "There are 4 components of this type visible."
+    },
+    {
+      "task_id": "task_010_path_hops",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "3 hops",
+      "parsed_answer": 3,
+      "reference_answer": 2,
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "COUNT_ERROR_DIFF_1",
+      "raw_response": "3 hops"
+    },
+    {
+      "task_id": "task_010_neighbor",
+      "model_name": "Gemini-Multimodal-Frontier",
+      "predicted_answer": "R1",
+      "parsed_answer": "R1",
+      "reference_answer": [
+        "SW1",
+        "GND2"
+      ],
+      "is_correct": false,
+      "latency_seconds": 0.05,
+      "error_category": "WRONG_COMPONENT_IDENTIFIED",
+      "raw_response": "R1"
+    }
+  ]
+}
