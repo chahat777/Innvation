@@ -169,13 +169,16 @@ with tab_arena:
                     renderer = VisualRenderer(os.path.join("dataset", "images"))
                     diag_filename = f"diag_{curr_task['task_id']}.png"
                     
-                    # Reconstruct temporary graph from metadata
-                    temp_G = nx.Graph()
-                    qmeta = curr_task.get("graph_metadata", {})
+                    task_seed = abs(hash(curr_task['task_id'])) % 10000
+                    engine = GroundTruthEngine(seed=task_seed)
+                    if curr_task.get("domain") == "floor_plan":
+                        G_diag = engine.generate_floor_plan_topology(num_rooms=6)
+                    else:
+                        G_diag = engine.generate_circuit_topology(num_nodes=7)
                     
-                    # Synthesize diagnostic image
+                    qmeta = curr_task.get("graph_metadata", {})
                     diag_path = renderer.render_ai_perception_overlay(
-                        nx.complete_graph(5), # visual proxy representation
+                        G_diag,
                         diag_filename,
                         qmeta
                     )

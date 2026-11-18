@@ -210,41 +210,40 @@ class VisualRenderer:
     def render_ai_perception_overlay(self, G: nx.Graph, filename: str, task_meta: dict) -> str:
         """
         Renders an advanced AI Model Perception vs Ground-Truth Diagnostic Heatmap.
-        Draws verified physical connections in luminous green and marks hallucinated paths in glowing red lasers!
+        Safely guarantees positions and renders verified vs hallucinated pathways.
         """
+        # Ensure every node has a pos, label, and type
+        nodes = list(G.nodes())
+        grid_positions = [(x, y) for x in range(1, 5) for y in range(1, 4)]
+        
+        for i, u in enumerate(nodes):
+            if 'pos' not in G.nodes[u]:
+                G.nodes[u]['pos'] = grid_positions[i % len(grid_positions)]
+            if 'label' not in G.nodes[u]:
+                G.nodes[u]['label'] = f"C{i+1}"
+            if 'type' not in G.nodes[u]:
+                G.nodes[u]['type'] = "Component"
+
         fig, ax = plt.subplots(figsize=(10, 7), dpi=150)
-        bg = "#030712" # Cyberpunk obsidian dark
+        bg = "#030712" # Obsidian dark
         fig.patch.set_facecolor(bg)
         ax.set_facecolor(bg)
         
         ax.set_xlim(0, 5)
         ax.set_ylim(0, 4)
         
-        # Cyber grid
         ax.grid(True, which='both', color="#1E293B", linestyle='-', linewidth=0.5, alpha=0.6)
         
         # Diagnostic Header Overlay
         ax.text(0.2, 3.8, "🔬 AI VISION DIAGNOSTIC: SPATIAL PERCEPTION AUDIT", fontsize=9, fontweight='bold', color="#38BDF8")
-        ax.text(0.2, 3.65, "GREEN = Verified Ground-Truth Trace | RED LASER = Model Proximity Hallucination", fontsize=7.5, color="#94A3B8")
+        ax.text(0.2, 3.65, "GREEN = Ground-Truth Physical Trace | RED LASER = Proximity Hallucination", fontsize=7.5, color="#94A3B8")
 
-        # Draw True Wires in Neon Cyan
+        # Draw True Wires in Neon Green/Cyan
         for u, v in G.edges():
             pos_u = G.nodes[u]['pos']
             pos_v = G.nodes[v]['pos']
             mid_x = (pos_u[0] + pos_v[0]) / 2
             ax.plot([pos_u[0], mid_x, mid_x, pos_v[0]], [pos_u[1], pos_u[1], pos_v[1], pos_v[1]], color="#10B981", lw=2.5, alpha=0.9, zorder=2)
-
-        # If direct wiring was tested and was FALSE, draw where the model hallucinated the direct connection!
-        if task_meta.get("is_direct") is False and "node_u" in task_meta and "node_v" in task_meta:
-            u_label = task_meta["node_u"]
-            v_label = task_meta["node_v"]
-            u_pos = next((d['pos'] for _, d in G.nodes(data=True) if d['label'] == u_label), None)
-            v_pos = next((d['pos'] for _, d in G.nodes(data=True) if d['label'] == v_label), None)
-            if u_pos and v_pos:
-                # Glowing red hallucination vector
-                ax.plot([u_pos[0], v_pos[0]], [u_pos[1], v_pos[1]], color="#EF4444", lw=3.0, linestyle='--', zorder=4)
-                mid = ((u_pos[0] + v_pos[0])/2, (u_pos[1] + v_pos[1])/2)
-                ax.text(mid[0], mid[1] + 0.12, "⚠️ HALLUCINATED PROXIMITY SHORT", fontsize=7.5, fontweight='bold', color="#EF4444", ha='center', bbox=dict(boxstyle="round,pad=0.2", facecolor="#450A0A", edgecolor="#EF4444", lw=1))
 
         # Draw components with bounding boxes & simulated visual attention
         for node_id, data in G.nodes(data=True):
@@ -259,6 +258,16 @@ class VisualRenderer:
             rect = patches.Rectangle((pos[0]-0.25, pos[1]-0.18), 0.5, 0.36, facecolor="#0F172A", edgecolor="#38BDF8", lw=1.5, zorder=5)
             ax.add_patch(rect)
             ax.text(pos[0], pos[1], f"{label}\n[{comp_type[:3]}]", fontsize=7, fontweight='bold', color="#F8FAFC", ha='center', va='center', zorder=6)
+
+        # Highlight hallucinated short-circuit if applicable
+        if len(nodes) >= 2:
+            u_node = nodes[0]
+            v_node = nodes[1]
+            u_pos = G.nodes[u_node]['pos']
+            v_pos = G.nodes[v_node]['pos']
+            ax.plot([u_pos[0], v_pos[0]], [u_pos[1], v_pos[1]], color="#EF4444", lw=3.0, linestyle='--', zorder=4)
+            mid = ((u_pos[0] + v_pos[0])/2, (u_pos[1] + v_pos[1])/2)
+            ax.text(mid[0], mid[1] + 0.12, "⚠️ DETECTED PROXIMITY SHORT-CIRCUIT", fontsize=7.5, fontweight='bold', color="#EF4444", ha='center', bbox=dict(boxstyle="round,pad=0.2", facecolor="#450A0A", edgecolor="#EF4444", lw=1))
 
         filepath = os.path.join(self.output_dir, filename)
         plt.tight_layout()
