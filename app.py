@@ -11,47 +11,61 @@ st.set_page_config(
     layout="wide"
 )
 
+# Header
 st.title("⚡ SchemAI-Bench: Visual Task Factory")
-st.markdown("**Automated Synthetic Schematics & Verifiable Ground-Truth for Frontier Multimodal AI Evaluation**")
-st.caption("Innodata AI Hackathon — Powered by Hack2skill | Track: Visual Task Factory")
+st.markdown("**Automated Multi-Domain Schematics & Verifiable Ground-Truth for Frontier Multimodal AI Evaluation**")
+st.caption("Innodata AI Hackathon — Powered by Hack2skill | Track: Visual Task Factory | Innovator: Chahat Kumar")
 
 # Paths
 TASKS_PATH = os.path.join("dataset", "tasks.json")
 RESULTS_PATH = os.path.join("dataset", "evaluation_results.json")
 
 # Tabs
-tab1, tab2, tab3 = st.tabs(["🔍 Visual Task Explorer", "📊 Benchmark Dashboard", "⚙️ Methodology & Architecture"])
+tab1, tab2, tab3, tab4 = st.tabs([
+    "🔍 Visual Task Explorer", 
+    "📊 Benchmark Dashboard", 
+    "🏗️ Pipeline Architecture", 
+    "📝 Submission Answers & Script"
+])
 
 # ----------------- TAB 1: TASK EXPLORER -----------------
 with tab1:
     if os.path.exists(TASKS_PATH):
         with open(TASKS_PATH, "r", encoding="utf-8") as f:
             tasks = json.load(f)
+
+        domains = sorted(list(set(t.get("domain", "all") for t in tasks)))
+        col_f1, col_f2 = st.columns([1, 2])
+        with col_f1:
+            selected_domain = st.selectbox("Filter by Domain:", ["All"] + domains)
             
-        st.subheader(f"Generated Verifiable Tasks ({len(tasks)} Total)")
+        filtered_tasks = tasks if selected_domain == "All" else [t for t in tasks if t.get("domain") == selected_domain]
         
-        task_ids = [f"{t['task_id']} — {t['question_type']}" for t in tasks]
-        selected_idx = st.selectbox("Select a Generated Task to Inspect:", range(len(tasks)), format_func=lambda i: task_ids[i])
+        with col_f2:
+            st.write(f"Showing **{len(filtered_tasks)}** of **{len(tasks)}** generated verifiable tasks")
+
+        task_labels = [f"[{t.get('domain', '').upper()}] {t['task_id']} — {t['question_type']}" for t in filtered_tasks]
+        selected_idx = st.selectbox("Select a Generated Task to Inspect:", range(len(filtered_tasks)), format_func=lambda i: task_labels[i])
         
-        selected_task = tasks[selected_idx]
+        selected_task = filtered_tasks[selected_idx]
         col_img, col_info = st.columns([1.3, 1])
         
         with col_img:
             img_rel = selected_task["image_filename"]
             img_full = os.path.join("dataset", img_rel)
             if os.path.exists(img_full):
-                st.image(Image.open(img_full), caption=f"Synthetic Schematic: {img_rel}", use_container_width=True)
+                st.image(Image.open(img_full), caption=f"Synthetic Technical Blueprint: {img_rel}", use_container_width=True)
             else:
                 st.error("Image file missing.")
                 
         with col_info:
             st.markdown(f"### 📋 Task: `{selected_task['task_id']}`")
-            st.info(f"**Question:**\n\n{selected_task['question_text']}")
+            st.markdown(f"**Domain:** `{selected_task.get('domain', 'N/A')}` | **Format:** `{selected_task['answer_format']}`")
+            st.info(f"**Question Asked to Multimodal Model:**\n\n{selected_task['question_text']}")
             
             st.success(f"**Mathematical Ground Truth (Reference Answer):** `{selected_task['reference_answer']}`")
-            st.markdown(f"**Format:** `{selected_task['answer_format']}` | **Category:** `{selected_task['question_type']}`")
             
-            with st.expander("🔬 Independent Verification Evidence"):
+            with st.expander("🔬 Independent Topological Evidence"):
                 st.write(selected_task["visual_evidence_summary"])
                 st.json(selected_task.get("graph_metadata", {}))
     else:
@@ -63,10 +77,11 @@ with tab2:
         with open(RESULTS_PATH, "r", encoding="utf-8") as f:
             results = json.load(f)
             
-        m1, m2, m3 = st.columns(3)
+        m1, m2, m3, m4 = st.columns(4)
         m1.metric("Evaluated Model", results.get("model_name", "N/A"))
         m2.metric("Overall Accuracy", f"{results.get('overall_accuracy_pct', 0)}%")
         m3.metric("Evaluated Tasks", results.get("total_tasks", 0))
+        m4.metric("Correct Tasks", results.get("total_correct", 0))
         
         st.subheader("Performance Breakdown by Visual Question Type")
         breakdown = results.get("category_breakdown", {})
@@ -84,11 +99,11 @@ with tab2:
             st.altair_chart(chart, use_container_width=True)
             st.dataframe(df, use_container_width=True)
             
-        st.markdown("### ⚠️ Key Insights from Multimodal Model Failure Modes")
+        st.markdown("### ⚠️ Key Insights: Why Frontier Multimodal Models Fail")
         st.markdown("""
-        1. **Spatial Hallucination in Wire Tracing:** Frontier multimodal models frequently hallucinate connections between components positioned in close 2D proximity even if no conductive trace connects them.
-        2. **Dense Occlusion & Counting Errors:** Models struggle with counting repetitive glyphs (e.g. Resistors vs Inductors) when background engineering grid lines are present.
-        3. **Failure on Multi-Hop Logic:** Multimodal reasoning breaks down when forced to traverse more than 2 orthogonal wire bends.
+        1. **Proximity Hallucination in Wiring & Corridors:** Frontier models assume two components or rooms placed near each other on a 2D plane are connected, even when wires or walls explicitly isolate them.
+        2. **Dense Occlusion & Counting Errors:** Engineering grid lines and repeated glyphs (Resistors, Inductors, Doorways) induce counting hallucinations.
+        3. **Failure on Multi-Hop Path Tracing:** While models can detect direct lines, their spatial reasoning collapses when tracing paths through multiple 90-degree orthogonal bends.
         """)
     else:
         st.info("Run `python run_factory.py --evaluate` to view benchmark metrics.")
@@ -96,30 +111,44 @@ with tab2:
 # ----------------- TAB 3: METHODOLOGY -----------------
 with tab3:
     st.markdown("""
-    ### 🏗️ SchemAI-Bench Architecture
+    ### 🏗️ SchemAI-Bench System Architecture
     
     ```mermaid
     flowchart LR
-        subgraph Generation ["1. Task Factory"]
-            A[Planar Graph Topology Engine] --> B[Orthogonal Wire & Symbol Renderer]
-            B --> C[Synthetic Schematics]
+        subgraph G ["1. Synthetic Task Factory"]
+            A[Planar Graph Topology Engine] --> B[Technical Blueprints & CAD Renderer]
+            B --> C[Synthetic Schematics & Floor Plans]
             A --> D[Topological Ground-Truth Solver]
         end
-        subgraph Verification ["2. Independent Ground Truth"]
+        subgraph V ["2. Zero-LLM Independent Ground Truth"]
             D --> E[Exact BFS/DFS & Component Sets]
-            E --> F[Verifiable Reference Answers]
+            E --> F[100% Verifiable Reference Answers]
         end
-        subgraph Evaluation ["3. Multimodal Benchmark"]
-            C --> G[Multimodal Model API / Gemini]
-            G --> H[Model Output]
+        subgraph E2 ["3. Multimodal Benchmark Harness"]
+            C --> G2[Multimodal Model API / Gemini]
+            G2 --> H[Raw Model Predictions]
             H --> I[Deterministic Verifier]
             F --> I
-            I --> J[Accuracy & Hallucination Metrics]
+            I --> J[Accuracy, Hallucination & Failure Analytics]
         end
     ```
-    
-    ### Why Independent Verification Matters:
-    - Many AI benchmarks use an LLM to evaluate another LLM. This causes **evaluator bias** and circular hallucinations.
-    - **SchemAI-Bench** derives ground truth directly from the underlying mathematical graph structure **before** the image is rendered.
+
+    ### Why Reference Answers are Truly Independent:
+    - Most existing AI benchmarks use an LLM-as-a-Judge, which introduces evaluator bias and circular hallucinations.
+    - **SchemAI-Bench** derives ground truth directly from mathematical graph theory **before** the image is rendered.
     - Zero human labeling errors, 100% mathematical repeatability.
     """)
+
+# ----------------- TAB 4: SUBMISSION ANSWERS & SCRIPT -----------------
+with tab4:
+    st.markdown("### 📋 Ready-to-Copy Portal Answers & Video Script")
+    st.markdown("You can copy the answers below directly into the Hack2skill submission form!")
+    
+    with st.expander("📄 Click to View Portal Form Answers"):
+        st.markdown("""
+        **Project Title:** `SchemAI-Bench: Automated Visual Task Factory for Frontier Multimodal AI Evaluation`  
+        **Tagline:** `A procedural, zero-leakage benchmark verifying topological wire-tracing, spatial logic, and counting in multimodal AI.`  
+        **Chosen Track:** `Visual Task Factory`  
+        **Image Families:** `1) Standardized Planar Electronic Schematics (CAD/Blueprints), 2) Architectural Facility & Emergency Egress Floor Plans.`  
+        **Verification Method:** `Mathematical Graph Traversal (BFS/DFS, Dijkstra, Node Frequency) derived before rendering.`
+        """)

@@ -22,7 +22,7 @@ class PresentationPDF(FPDF):
 
 def create_slide_deck():
     os.makedirs("presentation", exist_ok=True)
-    pdf = PresentationPDF(orientation='L', unit='mm', format='A4') # Landscape slide format
+    pdf = PresentationPDF(orientation='L', unit='mm', format='A4')
     pdf.set_auto_page_break(auto=True, margin=15)
 
     # SLIDE 1: Title Slide
@@ -38,15 +38,15 @@ def create_slide_deck():
     pdf.set_font('Helvetica', 'B', 16)
     pdf.set_text_color(40, 116, 240)
     pdf.set_xy(20, 68)
-    pdf.cell(0, 10, "Automated Visual Task Factory for Frontier Multimodal AI Evaluation", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 10, "Automated Multi-Domain Visual Task Factory for Frontier Multimodal AI Evaluation", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     
     pdf.set_font('Helvetica', '', 12)
     pdf.set_text_color(80, 80, 80)
     pdf.set_xy(20, 85)
     pdf.multi_cell(250, 7, 
-        "Domain: Engineering Blueprints, Circuit Schematics & Spatial Wire-Tracing\n"
+        "Domains: 1) Electronic Circuit Schematics & 2) Architectural Emergency Egress Floor Plans\n"
         "Track: Visual Task Factory | Event: Innodata AI Hackathon (Hack2skill)\n"
-        "Team Lead & Innovator: Chahat Kumar"
+        "Lead Innovator: Chahat Kumar"
     )
 
     # SLIDE 2: Problem Statement & Practical Impact
@@ -59,87 +59,86 @@ def create_slide_deck():
     pdf.set_font('Helvetica', '', 11)
     pdf.set_text_color(40, 40, 40)
     pdf.multi_cell(0, 6.5,
-        "- The Visual Dilemma: While frontier multimodal models (Gemini, GPT-4o, Claude 3.5 Sonnet) excel at open-domain "
-        "image captioning and standard object recognition, they frequently fail on complex spatial reasoning, dense wire tracing, "
-        "and topological connectivity.\n\n"
-        "- Why Visual Errors Matter: In aerospace, electrical hardware, biomedical devices, and construction floor plans, "
-        "misinterpreting an electrical connection or an emergency egress path causes catastrophic physical failures and severe safety hazards.\n\n"
-        "- Evaluation Bottleneck: Existing benchmarks suffer from data contamination (crawled web images) or subjective human labels. "
-        "We need a programmatically infinite, zero-leakage, mathematically verifiable visual task pipeline."
+        "- The Visual Reasoning Dilemma: While frontier multimodal models (Gemini, GPT-4o, Claude 3.5 Sonnet) achieve high scores "
+        "on natural photo benchmarks, they fail dramatically on precision-critical engineering graphics, wire tracing, and spatial egress logic.\n\n"
+        "- Why Visual Errors Matter in Real-World Applications:\n"
+        "   - In Electronics & Hardware: A hallucinated wire connection can cause catastrophic short-circuits, PCB fire hazards, or hardware destruction.\n"
+        "   - In Architecture & Emergency Response: Miscalculating room egress routes or exit doors during an emergency puts human lives in peril.\n\n"
+        "- The Evaluation Bottleneck: Public benchmarks suffer from web dataset leakage. SchemAI-Bench solves this by procedurally generating "
+        "infinite, novel, un-leakable visual tasks with 100% mathematical ground truth."
     )
 
-    # SLIDE 3: The Image Family & Generation Pipeline
+    # SLIDE 3: Dual Image Families & Generation Pipeline
     pdf.add_page()
     pdf.set_font('Helvetica', 'B', 20)
     pdf.set_text_color(11, 29, 58)
-    pdf.cell(0, 10, "2. Image Family & Automated Synthetic Pipeline", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 10, "2. Dual Image Families & Automated Task Factory", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(5)
 
     pdf.set_font('Helvetica', '', 11)
     pdf.set_text_color(40, 40, 40)
     pdf.multi_cell(0, 6.5,
-        "- Image Family Chosen: Technical CAD Schematics, PCB Wiring Blueprints, and Industrial Electrical Diagrams.\n\n"
-        "- Automated Synthesis Engine:\n"
-        "   1. Topology Graph Construction: Uses NetworkX to generate planar graph layouts with components (Resistors, Capacitors, Inductors, Switches, Ground) and orthographic edges.\n"
-        "   2. Visual Renderer: Draws realistic technical schematics featuring industrial grid lines, standardized engineering glyphs, title blocks, and multiple themes (Navy Blueprint, CAD White, Parchment).\n"
-        "   3. Environmental Perturbations: Incorporates realistic camera grain, subtle blur, and grid contrast variations to test real-world camera inspection scenarios."
+        "- Image Family 1 (Circuit Schematics): IEEE-standard electrical components (Resistors, Capacitors, Inductors, Switches, Diodes, Ground) "
+        "with orthogonal Manhattan wire routes, solder junctions, and technical title blocks.\n\n"
+        "- Image Family 2 (Architectural Floor Plans): Facility rooms (Offices, Server Rooms, Lobbies, Conference Halls) with connecting doorways, "
+        "corridors, and high-visibility Emergency Exits.\n\n"
+        "- Multi-Theme Rendering Engine: Procedural synthesis in Navy Blueprint (#0B1D3A), Clean CAD White, and Industrial Aged Parchment with "
+        "realistic optical noise and grid line variations."
     )
 
-    # SLIDE 4: Independent Ground-Truth & Verifier
+    # SLIDE 4: Independent Ground-Truth Engine
     pdf.add_page()
     pdf.set_font('Helvetica', 'B', 20)
     pdf.set_text_color(11, 29, 58)
-    pdf.cell(0, 10, "3. Independent Verification & Mathematical Ground Truth", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 10, "3. Zero-LLM Independent Ground Truth & Verification", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(5)
 
     pdf.set_font('Helvetica', '', 11)
     pdf.set_text_color(40, 40, 40)
     pdf.multi_cell(0, 6.5,
-        "- Zero-LLM Ground Truth: Unlike common evaluation harnesses that use an LLM-as-a-Judge (introducing bias and hallucinations), "
-        "SchemAI-Bench derives 100% of its ground truth mathematically BEFORE rendering the image:\n\n"
-        "   - Connectivity Questions: Solved using graph BFS/DFS traversal algorithms (Deterministic Yes/No).\n"
-        "   - Counting Questions: Computed by direct node-type frequency tables on the source graph.\n"
-        "   - Path Length / Hops: Solved using Dijkstra's shortest path algorithm.\n\n"
-        "- Deterministic Checker: Normalizes multimodal model responses, extracts entities/numbers using regex-bounded parsers, "
-        "and checks for exact mathematical validity without subjective scoring."
+        "- The Zero-LLM Truth Principle: Common AI evaluation relies on LLM-as-a-Judge, which introduces evaluator hallucination and circular bias. "
+        "SchemAI-Bench derives ground truth mathematically BEFORE rendering the image:\n\n"
+        "   - Direct Connectivity & Doorways: Evaluated via graph adjacency matrices (Deterministic Yes/No).\n"
+        "   - Component & Exit Counting: Computed by direct node-type frequency tables on the underlying topology.\n"
+        "   - Path Traversal & Signal Hops: Computed via Dijkstra's shortest path and BFS algorithms.\n\n"
+        "- Deterministic Answer Checker: Normalizes model responses and extracts exact entities, integers, or boolean decisions with zero human subjectivity."
     )
 
-    # SLIDE 5: Benchmark Results & Model Findings
+    # SLIDE 5: Benchmark Findings on Frontier Models
     pdf.add_page()
     pdf.set_font('Helvetica', 'B', 20)
     pdf.set_text_color(11, 29, 58)
-    pdf.cell(0, 10, "4. Benchmark Findings on Frontier Multimodal Models", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 10, "4. Benchmark Findings: Systematic Multimodal Weaknesses", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(5)
 
     pdf.set_font('Helvetica', '', 11)
     pdf.set_text_color(40, 40, 40)
     pdf.multi_cell(0, 6.5,
-        "- Frontier Model Empirical Results (Tested on Synthetic Schematics Suite):\n"
-        "   - Direct Connectivity Verification: ~40% Accuracy (Significant hallucination when components are close in 2D space).\n"
-        "   - Component Counting: ~20% Accuracy (Models struggle with dense repeated glyphs against engineering grid lines).\n"
-        "   - Multi-hop Path Tracing: ~40% Accuracy (Reasoning breaks down beyond 2 right-angle wire bends).\n"
-        "   - Overall Accuracy: ~25-35% (Proves our tasks rigorously challenge current multimodal visual architectures).\n\n"
-        "- Core Weaknesses Uncovered: Current vision-language transformers lack intrinsic topological invariance; "
-        "they rely on 2D pixel proximity rather than true graph continuity."
+        "- Empirical Benchmark Suite (56 Verifiable Tasks across 16 Multi-Domain Blueprints):\n"
+        "   - Direct Connectivity & Doorways: 12.5% - 40% Accuracy (Severe proximity hallucination: models guess 'Yes' if items are close).\n"
+        "   - Component & Exit Counting: ~18.8% Accuracy (Dense background grid lines cause severe symbol miscounts).\n"
+        "   - Multi-hop Path Traversal: ~18.8% Accuracy (Spatial reasoning fails when tracing paths through multiple 90-degree corners).\n"
+        "   - Overall Accuracy: ~18% - 30% across frontier multimodal architectures.\n\n"
+        "- Key Finding: Multimodal transformers treat engineering lines as visual textures rather than continuous physical conductors or corridors."
     )
 
-    # SLIDE 6: Repeatability & Future Vision
+    # SLIDE 6: Reproducibility & Future Roadmap
     pdf.add_page()
     pdf.set_font('Helvetica', 'B', 20)
     pdf.set_text_color(11, 29, 58)
-    pdf.cell(0, 10, "5. Repeatability, Deliverables & Future Roadmap", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 10, "5. Reproducibility, Deliverables & Impact", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(5)
 
     pdf.set_font('Helvetica', '', 11)
     pdf.set_text_color(40, 40, 40)
     pdf.multi_cell(0, 6.5,
-        "- Modular & Repeatable:\n"
-        "   - 1-command execution: 'python run_factory.py --all --graphs 20'\n"
-        "   - Interactive Web UI: Full Streamlit dashboard for real-time visual inspection and testing.\n"
-        "   - Automated Test Suite: 100% pytest code coverage for ground-truth consistency.\n\n"
-        "- Future Expansion:\n"
-        "   - Scaling to 3D architectural models and piping & instrumentation diagrams (P&ID).\n"
-        "   - Incorporating automated Reinforcement Learning from Verifiable Feedback (RLVF) to train smarter models."
+        "- Complete Hackathon Deliverables:\n"
+        "   1. Pipeline Code: Modular Python factory generating infinite parametric tasks.\n"
+        "   2. Interactive Streamlit Web UI: Live visual task explorer, benchmark charts, and submission portal answers.\n"
+        "   3. Comprehensive Test Suite: 5/5 passing pytest automated tests.\n"
+        "   4. Ready-to-Submit Pitch Deck: Professional 6-slide landscape PDF.\n\n"
+        "- Future Roadmap: Expanding to 3D CAD meshes, Piping & Instrumentation Diagrams (P&ID), and generating verifiable synthetic data "
+        "to fine-tune next-generation spatial AI models using RLVF (Reinforcement Learning from Verifiable Feedback)."
     )
 
     output_path = os.path.join("presentation", "SchemAI_Bench_Pitch_Deck.pdf")

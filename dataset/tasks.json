@@ -1,55 +1,54 @@
 [
   {
-    "task_id": "task_001_conn_direct",
+    "task_id": "circuit_001_conn_direct",
     "domain": "circuit_schematic",
     "question_type": "connectivity_exists",
-    "question_text": "Is component 'R1' directly wired to component 'C1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
-    "reference_answer": "No",
+    "question_text": "Is component 'R1' directly wired to component 'SW1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "reference_answer": "Yes",
     "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_001_42.png",
-    "visual_evidence_summary": "Direct wiring check between R1 at (3, 3) and C1 at (3, 1). Edge exists: False.",
+    "image_filename": "images\\circuit_schematic_001_42.png",
+    "visual_evidence_summary": "Direct wiring check between R1 at (3, 3) and SW1 at (4, 3). Edge exists: True.",
     "graph_metadata": {
       "node_u": "R1",
-      "node_v": "C1",
-      "is_direct": false
+      "node_v": "SW1",
+      "is_direct": true
     }
   },
   {
-    "task_id": "task_001_count",
+    "task_id": "circuit_001_count",
     "domain": "circuit_schematic",
     "question_type": "component_count",
-    "question_text": "How many 'Resistor' components (labeled with prefix 'R') are present in this schematic? Provide only the integer count.",
-    "reference_answer": 3,
+    "question_text": "How many 'Diode' components (labeled with prefix 'D') are present in this schematic? Provide only the integer count.",
+    "reference_answer": 0,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_001_42.png",
-    "visual_evidence_summary": "Count of Resistor components in graph: 3.",
+    "image_filename": "images\\circuit_schematic_001_42.png",
+    "visual_evidence_summary": "Count of Diode components in graph: 0.",
     "graph_metadata": {
-      "target_type": "Resistor",
-      "count": 3
+      "target_type": "Diode",
+      "count": 0
     }
   },
   {
-    "task_id": "task_001_path_hops",
+    "task_id": "circuit_001_path_hops",
     "domain": "circuit_schematic",
     "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'R1' to component 'C1'? Provide only the integer number.",
-    "reference_answer": 2,
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'R1' to component 'SW1'? Provide only the integer number.",
+    "reference_answer": 1,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_001_42.png",
-    "visual_evidence_summary": "Shortest path from R1 to C1: R1 -> SW1 -> C1. Total hops: 2.",
+    "image_filename": "images\\circuit_schematic_001_42.png",
+    "visual_evidence_summary": "Shortest path from R1 to SW1: R1 -> SW1. Total hops: 1.",
     "graph_metadata": {
       "source": "R1",
-      "target": "C1",
-      "hops": 2,
+      "target": "SW1",
+      "hops": 1,
       "path": [
         "R1",
-        "SW1",
-        "C1"
+        "SW1"
       ]
     }
   },
   {
-    "task_id": "task_001_neighbor",
+    "task_id": "circuit_001_neighbor",
     "domain": "circuit_schematic",
     "question_type": "neighbor_id",
     "question_text": "Name any one component directly connected by a single wire to 'R1'. Provide only the component label (e.g. R1, C1).",
@@ -59,7 +58,7 @@
       "R3"
     ],
     "answer_format": "string",
-    "image_filename": "images\\schematic_batch_001_42.png",
+    "image_filename": "images\\circuit_schematic_001_42.png",
     "visual_evidence_summary": "Neighbors of R1: ['SW1', 'C2', 'R3'].",
     "graph_metadata": {
       "source": "R1",
@@ -71,28 +70,297 @@
     }
   },
   {
-    "task_id": "task_002_conn_direct",
+    "task_id": "arch_002_doorway",
+    "domain": "floor_plan",
+    "question_type": "connectivity_exists",
+    "question_text": "Can an occupant walk directly from room 'LOB-1' into room 'CAF-1' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\floor_plan_002_43.png",
+    "visual_evidence_summary": "Direct doorway between LOB-1 and CAF-1. Edge exists: False.",
+    "graph_metadata": {
+      "room_u": "LOB-1",
+      "room_v": "CAF-1",
+      "direct_door": false
+    }
+  },
+  {
+    "task_id": "arch_002_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_002_43.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 1.",
+    "graph_metadata": {
+      "exit_count": 1
+    }
+  },
+  {
+    "task_id": "arch_002_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'LOB-1' to room 'CAF-1'? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_002_43.png",
+    "visual_evidence_summary": "Shortest route from LOB-1 to CAF-1: LOB-1 -> EXIT-1 -> CAF-1. Transitions: 2.",
+    "graph_metadata": {
+      "source": "LOB-1",
+      "destination": "CAF-1",
+      "transitions": 2
+    }
+  },
+  {
+    "task_id": "circuit_003_conn_direct",
     "domain": "circuit_schematic",
     "question_type": "connectivity_exists",
-    "question_text": "Is component 'L1' directly wired to component 'BAT1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "question_text": "Is component 'GND2' directly wired to component 'BAT1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
     "reference_answer": "Yes",
     "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_002_43.png",
-    "visual_evidence_summary": "Direct wiring check between L1 at (4, 1) and BAT1 at (1, 1). Edge exists: True.",
+    "image_filename": "images\\circuit_schematic_003_44.png",
+    "visual_evidence_summary": "Direct wiring check between GND2 at (3, 3) and BAT1 at (4, 2). Edge exists: True.",
     "graph_metadata": {
-      "node_u": "L1",
+      "node_u": "GND2",
       "node_v": "BAT1",
       "is_direct": true
     }
   },
   {
-    "task_id": "task_002_count",
+    "task_id": "circuit_003_count",
+    "domain": "circuit_schematic",
+    "question_type": "component_count",
+    "question_text": "How many 'Inductor' components (labeled with prefix 'L') are present in this schematic? Provide only the integer count.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_003_44.png",
+    "visual_evidence_summary": "Count of Inductor components in graph: 1.",
+    "graph_metadata": {
+      "target_type": "Inductor",
+      "count": 1
+    }
+  },
+  {
+    "task_id": "circuit_003_path_hops",
+    "domain": "circuit_schematic",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'GND2' to component 'BAT1'? Provide only the integer number.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_003_44.png",
+    "visual_evidence_summary": "Shortest path from GND2 to BAT1: GND2 -> BAT1. Total hops: 1.",
+    "graph_metadata": {
+      "source": "GND2",
+      "target": "BAT1",
+      "hops": 1,
+      "path": [
+        "GND2",
+        "BAT1"
+      ]
+    }
+  },
+  {
+    "task_id": "circuit_003_neighbor",
+    "domain": "circuit_schematic",
+    "question_type": "neighbor_id",
+    "question_text": "Name any one component directly connected by a single wire to 'GND2'. Provide only the component label (e.g. R1, C1).",
+    "reference_answer": [
+      "L1",
+      "GND1",
+      "BAT1"
+    ],
+    "answer_format": "string",
+    "image_filename": "images\\circuit_schematic_003_44.png",
+    "visual_evidence_summary": "Neighbors of GND2: ['L1', 'GND1', 'BAT1'].",
+    "graph_metadata": {
+      "source": "GND2",
+      "valid_neighbors": [
+        "L1",
+        "GND1",
+        "BAT1"
+      ]
+    }
+  },
+  {
+    "task_id": "arch_004_doorway",
+    "domain": "floor_plan",
+    "question_type": "connectivity_exists",
+    "question_text": "Can an occupant walk directly from room 'CONF-1' into room 'CONF-2' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
+    "reference_answer": "Yes",
+    "answer_format": "boolean",
+    "image_filename": "images\\floor_plan_004_45.png",
+    "visual_evidence_summary": "Direct doorway between CONF-1 and CONF-2. Edge exists: True.",
+    "graph_metadata": {
+      "room_u": "CONF-1",
+      "room_v": "CONF-2",
+      "direct_door": true
+    }
+  },
+  {
+    "task_id": "arch_004_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_004_45.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
+    "graph_metadata": {
+      "exit_count": 2
+    }
+  },
+  {
+    "task_id": "arch_004_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'CONF-1' to room 'CONF-2'? Provide only the integer count.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_004_45.png",
+    "visual_evidence_summary": "Shortest route from CONF-1 to CONF-2: CONF-1 -> CONF-2. Transitions: 1.",
+    "graph_metadata": {
+      "source": "CONF-1",
+      "destination": "CONF-2",
+      "transitions": 1
+    }
+  },
+  {
+    "task_id": "circuit_005_conn_direct",
+    "domain": "circuit_schematic",
+    "question_type": "connectivity_exists",
+    "question_text": "Is component 'BAT1' directly wired to component 'C1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\circuit_schematic_005_46.png",
+    "visual_evidence_summary": "Direct wiring check between BAT1 at (1, 2) and C1 at (3, 1). Edge exists: False.",
+    "graph_metadata": {
+      "node_u": "BAT1",
+      "node_v": "C1",
+      "is_direct": false
+    }
+  },
+  {
+    "task_id": "circuit_005_count",
+    "domain": "circuit_schematic",
+    "question_type": "component_count",
+    "question_text": "How many 'Resistor' components (labeled with prefix 'R') are present in this schematic? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_005_46.png",
+    "visual_evidence_summary": "Count of Resistor components in graph: 2.",
+    "graph_metadata": {
+      "target_type": "Resistor",
+      "count": 2
+    }
+  },
+  {
+    "task_id": "circuit_005_path_hops",
+    "domain": "circuit_schematic",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'BAT1' to component 'C1'? Provide only the integer number.",
+    "reference_answer": 3,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_005_46.png",
+    "visual_evidence_summary": "Shortest path from BAT1 to C1: BAT1 -> R2 -> SW2 -> C1. Total hops: 3.",
+    "graph_metadata": {
+      "source": "BAT1",
+      "target": "C1",
+      "hops": 3,
+      "path": [
+        "BAT1",
+        "R2",
+        "SW2",
+        "C1"
+      ]
+    }
+  },
+  {
+    "task_id": "circuit_005_neighbor",
+    "domain": "circuit_schematic",
+    "question_type": "neighbor_id",
+    "question_text": "Name any one component directly connected by a single wire to 'BAT1'. Provide only the component label (e.g. R1, C1).",
+    "reference_answer": [
+      "R2",
+      "BAT2"
+    ],
+    "answer_format": "string",
+    "image_filename": "images\\circuit_schematic_005_46.png",
+    "visual_evidence_summary": "Neighbors of BAT1: ['R2', 'BAT2'].",
+    "graph_metadata": {
+      "source": "BAT1",
+      "valid_neighbors": [
+        "R2",
+        "BAT2"
+      ]
+    }
+  },
+  {
+    "task_id": "arch_006_doorway",
+    "domain": "floor_plan",
+    "question_type": "connectivity_exists",
+    "question_text": "Can an occupant walk directly from room 'EXIT-2' into room 'LOB-1' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
+    "reference_answer": "Yes",
+    "answer_format": "boolean",
+    "image_filename": "images\\floor_plan_006_47.png",
+    "visual_evidence_summary": "Direct doorway between EXIT-2 and LOB-1. Edge exists: True.",
+    "graph_metadata": {
+      "room_u": "EXIT-2",
+      "room_v": "LOB-1",
+      "direct_door": true
+    }
+  },
+  {
+    "task_id": "arch_006_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_006_47.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
+    "graph_metadata": {
+      "exit_count": 2
+    }
+  },
+  {
+    "task_id": "arch_006_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'EXIT-2' to room 'LOB-1'? Provide only the integer count.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_006_47.png",
+    "visual_evidence_summary": "Shortest route from EXIT-2 to LOB-1: EXIT-2 -> LOB-1. Transitions: 1.",
+    "graph_metadata": {
+      "source": "EXIT-2",
+      "destination": "LOB-1",
+      "transitions": 1
+    }
+  },
+  {
+    "task_id": "circuit_007_conn_direct",
+    "domain": "circuit_schematic",
+    "question_type": "connectivity_exists",
+    "question_text": "Is component 'BAT1' directly wired to component 'SW1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\circuit_schematic_007_48.png",
+    "visual_evidence_summary": "Direct wiring check between BAT1 at (1, 2) and SW1 at (3, 2). Edge exists: False.",
+    "graph_metadata": {
+      "node_u": "BAT1",
+      "node_v": "SW1",
+      "is_direct": false
+    }
+  },
+  {
+    "task_id": "circuit_007_count",
     "domain": "circuit_schematic",
     "question_type": "component_count",
     "question_text": "How many 'Resistor' components (labeled with prefix 'R') are present in this schematic? Provide only the integer count.",
     "reference_answer": 0,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_002_43.png",
+    "image_filename": "images\\circuit_schematic_007_48.png",
     "visual_evidence_summary": "Count of Resistor components in graph: 0.",
     "graph_metadata": {
       "target_type": "Resistor",
@@ -100,485 +368,111 @@
     }
   },
   {
-    "task_id": "task_002_path_hops",
+    "task_id": "circuit_007_path_hops",
     "domain": "circuit_schematic",
     "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'L1' to component 'BAT1'? Provide only the integer number.",
-    "reference_answer": 1,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_002_43.png",
-    "visual_evidence_summary": "Shortest path from L1 to BAT1: L1 -> BAT1. Total hops: 1.",
-    "graph_metadata": {
-      "source": "L1",
-      "target": "BAT1",
-      "hops": 1,
-      "path": [
-        "L1",
-        "BAT1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_002_neighbor",
-    "domain": "circuit_schematic",
-    "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'L1'. Provide only the component label (e.g. R1, C1).",
-    "reference_answer": [
-      "SW1",
-      "BAT1"
-    ],
-    "answer_format": "string",
-    "image_filename": "images\\schematic_batch_002_43.png",
-    "visual_evidence_summary": "Neighbors of L1: ['SW1', 'BAT1'].",
-    "graph_metadata": {
-      "source": "L1",
-      "valid_neighbors": [
-        "SW1",
-        "BAT1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_003_conn_direct",
-    "domain": "circuit_schematic",
-    "question_type": "connectivity_exists",
-    "question_text": "Is component 'GND3' directly wired to component 'D1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
-    "reference_answer": "No",
-    "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_003_44.png",
-    "visual_evidence_summary": "Direct wiring check between GND3 at (3, 1) and D1 at (1, 3). Edge exists: False.",
-    "graph_metadata": {
-      "node_u": "GND3",
-      "node_v": "D1",
-      "is_direct": false
-    }
-  },
-  {
-    "task_id": "task_003_count",
-    "domain": "circuit_schematic",
-    "question_type": "component_count",
-    "question_text": "How many 'Capacitor' components (labeled with prefix 'C') are present in this schematic? Provide only the integer count.",
-    "reference_answer": 1,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_003_44.png",
-    "visual_evidence_summary": "Count of Capacitor components in graph: 1.",
-    "graph_metadata": {
-      "target_type": "Capacitor",
-      "count": 1
-    }
-  },
-  {
-    "task_id": "task_003_path_hops",
-    "domain": "circuit_schematic",
-    "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'GND3' to component 'D1'? Provide only the integer number.",
-    "reference_answer": 3,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_003_44.png",
-    "visual_evidence_summary": "Shortest path from GND3 to D1: GND3 -> GND2 -> C1 -> D1. Total hops: 3.",
-    "graph_metadata": {
-      "source": "GND3",
-      "target": "D1",
-      "hops": 3,
-      "path": [
-        "GND3",
-        "GND2",
-        "C1",
-        "D1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_003_neighbor",
-    "domain": "circuit_schematic",
-    "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'GND3'. Provide only the component label (e.g. R1, C1).",
-    "reference_answer": [
-      "GND2"
-    ],
-    "answer_format": "string",
-    "image_filename": "images\\schematic_batch_003_44.png",
-    "visual_evidence_summary": "Neighbors of GND3: ['GND2'].",
-    "graph_metadata": {
-      "source": "GND3",
-      "valid_neighbors": [
-        "GND2"
-      ]
-    }
-  },
-  {
-    "task_id": "task_004_conn_direct",
-    "domain": "circuit_schematic",
-    "question_type": "connectivity_exists",
-    "question_text": "Is component 'BAT1' directly wired to component 'L1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
-    "reference_answer": "No",
-    "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_004_45.png",
-    "visual_evidence_summary": "Direct wiring check between BAT1 at (4, 3) and L1 at (3, 3). Edge exists: False.",
-    "graph_metadata": {
-      "node_u": "BAT1",
-      "node_v": "L1",
-      "is_direct": false
-    }
-  },
-  {
-    "task_id": "task_004_count",
-    "domain": "circuit_schematic",
-    "question_type": "component_count",
-    "question_text": "How many 'Battery' components (labeled with prefix 'BAT') are present in this schematic? Provide only the integer count.",
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'BAT1' to component 'SW1'? Provide only the integer number.",
     "reference_answer": 2,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_004_45.png",
-    "visual_evidence_summary": "Count of Battery components in graph: 2.",
-    "graph_metadata": {
-      "target_type": "Battery",
-      "count": 2
-    }
-  },
-  {
-    "task_id": "task_004_path_hops",
-    "domain": "circuit_schematic",
-    "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'BAT1' to component 'L1'? Provide only the integer number.",
-    "reference_answer": 2,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_004_45.png",
-    "visual_evidence_summary": "Shortest path from BAT1 to L1: BAT1 -> L2 -> L1. Total hops: 2.",
+    "image_filename": "images\\circuit_schematic_007_48.png",
+    "visual_evidence_summary": "Shortest path from BAT1 to SW1: BAT1 -> D1 -> SW1. Total hops: 2.",
     "graph_metadata": {
       "source": "BAT1",
-      "target": "L1",
+      "target": "SW1",
       "hops": 2,
       "path": [
         "BAT1",
-        "L2",
-        "L1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_004_neighbor",
-    "domain": "circuit_schematic",
-    "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'BAT1'. Provide only the component label (e.g. R1, C1).",
-    "reference_answer": [
-      "L2",
-      "GND1"
-    ],
-    "answer_format": "string",
-    "image_filename": "images\\schematic_batch_004_45.png",
-    "visual_evidence_summary": "Neighbors of BAT1: ['L2', 'GND1'].",
-    "graph_metadata": {
-      "source": "BAT1",
-      "valid_neighbors": [
-        "L2",
-        "GND1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_005_conn_direct",
-    "domain": "circuit_schematic",
-    "question_type": "connectivity_exists",
-    "question_text": "Is component 'GND1' directly wired to component 'BAT2' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
-    "reference_answer": "Yes",
-    "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_005_46.png",
-    "visual_evidence_summary": "Direct wiring check between GND1 at (3, 2) and BAT2 at (2, 3). Edge exists: True.",
-    "graph_metadata": {
-      "node_u": "GND1",
-      "node_v": "BAT2",
-      "is_direct": true
-    }
-  },
-  {
-    "task_id": "task_005_count",
-    "domain": "circuit_schematic",
-    "question_type": "component_count",
-    "question_text": "How many 'Capacitor' components (labeled with prefix 'C') are present in this schematic? Provide only the integer count.",
-    "reference_answer": 1,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_005_46.png",
-    "visual_evidence_summary": "Count of Capacitor components in graph: 1.",
-    "graph_metadata": {
-      "target_type": "Capacitor",
-      "count": 1
-    }
-  },
-  {
-    "task_id": "task_005_path_hops",
-    "domain": "circuit_schematic",
-    "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'GND1' to component 'BAT2'? Provide only the integer number.",
-    "reference_answer": 1,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_005_46.png",
-    "visual_evidence_summary": "Shortest path from GND1 to BAT2: GND1 -> BAT2. Total hops: 1.",
-    "graph_metadata": {
-      "source": "GND1",
-      "target": "BAT2",
-      "hops": 1,
-      "path": [
-        "GND1",
-        "BAT2"
-      ]
-    }
-  },
-  {
-    "task_id": "task_005_neighbor",
-    "domain": "circuit_schematic",
-    "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'GND1'. Provide only the component label (e.g. R1, C1).",
-    "reference_answer": [
-      "C1",
-      "BAT2"
-    ],
-    "answer_format": "string",
-    "image_filename": "images\\schematic_batch_005_46.png",
-    "visual_evidence_summary": "Neighbors of GND1: ['C1', 'BAT2'].",
-    "graph_metadata": {
-      "source": "GND1",
-      "valid_neighbors": [
-        "C1",
-        "BAT2"
-      ]
-    }
-  },
-  {
-    "task_id": "task_006_conn_direct",
-    "domain": "circuit_schematic",
-    "question_type": "connectivity_exists",
-    "question_text": "Is component 'R1' directly wired to component 'D1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
-    "reference_answer": "No",
-    "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_006_47.png",
-    "visual_evidence_summary": "Direct wiring check between R1 at (4, 1) and D1 at (1, 1). Edge exists: False.",
-    "graph_metadata": {
-      "node_u": "R1",
-      "node_v": "D1",
-      "is_direct": false
-    }
-  },
-  {
-    "task_id": "task_006_count",
-    "domain": "circuit_schematic",
-    "question_type": "component_count",
-    "question_text": "How many 'Battery' components (labeled with prefix 'BAT') are present in this schematic? Provide only the integer count.",
-    "reference_answer": 2,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_006_47.png",
-    "visual_evidence_summary": "Count of Battery components in graph: 2.",
-    "graph_metadata": {
-      "target_type": "Battery",
-      "count": 2
-    }
-  },
-  {
-    "task_id": "task_006_path_hops",
-    "domain": "circuit_schematic",
-    "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'R1' to component 'D1'? Provide only the integer number.",
-    "reference_answer": 3,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_006_47.png",
-    "visual_evidence_summary": "Shortest path from R1 to D1: R1 -> BAT1 -> L1 -> D1. Total hops: 3.",
-    "graph_metadata": {
-      "source": "R1",
-      "target": "D1",
-      "hops": 3,
-      "path": [
-        "R1",
-        "BAT1",
-        "L1",
-        "D1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_006_neighbor",
-    "domain": "circuit_schematic",
-    "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'R1'. Provide only the component label (e.g. R1, C1).",
-    "reference_answer": [
-      "BAT1",
-      "R3",
-      "R2"
-    ],
-    "answer_format": "string",
-    "image_filename": "images\\schematic_batch_006_47.png",
-    "visual_evidence_summary": "Neighbors of R1: ['BAT1', 'R3', 'R2'].",
-    "graph_metadata": {
-      "source": "R1",
-      "valid_neighbors": [
-        "BAT1",
-        "R3",
-        "R2"
-      ]
-    }
-  },
-  {
-    "task_id": "task_007_conn_direct",
-    "domain": "circuit_schematic",
-    "question_type": "connectivity_exists",
-    "question_text": "Is component 'D1' directly wired to component 'BAT1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
-    "reference_answer": "Yes",
-    "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_007_48.png",
-    "visual_evidence_summary": "Direct wiring check between D1 at (3, 1) and BAT1 at (1, 2). Edge exists: True.",
-    "graph_metadata": {
-      "node_u": "D1",
-      "node_v": "BAT1",
-      "is_direct": true
-    }
-  },
-  {
-    "task_id": "task_007_count",
-    "domain": "circuit_schematic",
-    "question_type": "component_count",
-    "question_text": "How many 'Inductor' components (labeled with prefix 'L') are present in this schematic? Provide only the integer count.",
-    "reference_answer": 0,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_007_48.png",
-    "visual_evidence_summary": "Count of Inductor components in graph: 0.",
-    "graph_metadata": {
-      "target_type": "Inductor",
-      "count": 0
-    }
-  },
-  {
-    "task_id": "task_007_path_hops",
-    "domain": "circuit_schematic",
-    "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'D1' to component 'BAT1'? Provide only the integer number.",
-    "reference_answer": 1,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_007_48.png",
-    "visual_evidence_summary": "Shortest path from D1 to BAT1: D1 -> BAT1. Total hops: 1.",
-    "graph_metadata": {
-      "source": "D1",
-      "target": "BAT1",
-      "hops": 1,
-      "path": [
         "D1",
-        "BAT1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_007_neighbor",
-    "domain": "circuit_schematic",
-    "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'D1'. Provide only the component label (e.g. R1, C1).",
-    "reference_answer": [
-      "BAT1",
-      "GND1",
-      "SW2",
-      "C2",
-      "SW1"
-    ],
-    "answer_format": "string",
-    "image_filename": "images\\schematic_batch_007_48.png",
-    "visual_evidence_summary": "Neighbors of D1: ['BAT1', 'GND1', 'SW2', 'C2', 'SW1'].",
-    "graph_metadata": {
-      "source": "D1",
-      "valid_neighbors": [
-        "BAT1",
-        "GND1",
-        "SW2",
-        "C2",
         "SW1"
       ]
     }
   },
   {
-    "task_id": "task_008_conn_direct",
-    "domain": "circuit_schematic",
-    "question_type": "connectivity_exists",
-    "question_text": "Is component 'BAT1' directly wired to component 'GND1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
-    "reference_answer": "No",
-    "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_008_49.png",
-    "visual_evidence_summary": "Direct wiring check between BAT1 at (1, 3) and GND1 at (2, 2). Edge exists: False.",
-    "graph_metadata": {
-      "node_u": "BAT1",
-      "node_v": "GND1",
-      "is_direct": false
-    }
-  },
-  {
-    "task_id": "task_008_count",
-    "domain": "circuit_schematic",
-    "question_type": "component_count",
-    "question_text": "How many 'Ground' components (labeled with prefix 'GND') are present in this schematic? Provide only the integer count.",
-    "reference_answer": 1,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_008_49.png",
-    "visual_evidence_summary": "Count of Ground components in graph: 1.",
-    "graph_metadata": {
-      "target_type": "Ground",
-      "count": 1
-    }
-  },
-  {
-    "task_id": "task_008_path_hops",
-    "domain": "circuit_schematic",
-    "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'BAT1' to component 'GND1'? Provide only the integer number.",
-    "reference_answer": 2,
-    "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_008_49.png",
-    "visual_evidence_summary": "Shortest path from BAT1 to GND1: BAT1 -> SW3 -> GND1. Total hops: 2.",
-    "graph_metadata": {
-      "source": "BAT1",
-      "target": "GND1",
-      "hops": 2,
-      "path": [
-        "BAT1",
-        "SW3",
-        "GND1"
-      ]
-    }
-  },
-  {
-    "task_id": "task_008_neighbor",
+    "task_id": "circuit_007_neighbor",
     "domain": "circuit_schematic",
     "question_type": "neighbor_id",
     "question_text": "Name any one component directly connected by a single wire to 'BAT1'. Provide only the component label (e.g. R1, C1).",
     "reference_answer": [
-      "SW3"
+      "D1",
+      "C1"
     ],
     "answer_format": "string",
-    "image_filename": "images\\schematic_batch_008_49.png",
-    "visual_evidence_summary": "Neighbors of BAT1: ['SW3'].",
+    "image_filename": "images\\circuit_schematic_007_48.png",
+    "visual_evidence_summary": "Neighbors of BAT1: ['D1', 'C1'].",
     "graph_metadata": {
       "source": "BAT1",
       "valid_neighbors": [
-        "SW3"
+        "D1",
+        "C1"
       ]
     }
   },
   {
-    "task_id": "task_009_conn_direct",
-    "domain": "circuit_schematic",
+    "task_id": "arch_008_doorway",
+    "domain": "floor_plan",
     "question_type": "connectivity_exists",
-    "question_text": "Is component 'R1' directly wired to component 'L1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "question_text": "Can an occupant walk directly from room 'EXIT-3' into room 'CAF-1' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
     "reference_answer": "No",
     "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_009_50.png",
-    "visual_evidence_summary": "Direct wiring check between R1 at (1, 2) and L1 at (3, 1). Edge exists: False.",
+    "image_filename": "images\\floor_plan_008_49.png",
+    "visual_evidence_summary": "Direct doorway between EXIT-3 and CAF-1. Edge exists: False.",
     "graph_metadata": {
-      "node_u": "R1",
-      "node_v": "L1",
+      "room_u": "EXIT-3",
+      "room_v": "CAF-1",
+      "direct_door": false
+    }
+  },
+  {
+    "task_id": "arch_008_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 3,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_008_49.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 3.",
+    "graph_metadata": {
+      "exit_count": 3
+    }
+  },
+  {
+    "task_id": "arch_008_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'EXIT-3' to room 'CAF-1'? Provide only the integer count.",
+    "reference_answer": 3,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_008_49.png",
+    "visual_evidence_summary": "Shortest route from EXIT-3 to CAF-1: EXIT-3 -> EXIT-2 -> EXIT-1 -> CAF-1. Transitions: 3.",
+    "graph_metadata": {
+      "source": "EXIT-3",
+      "destination": "CAF-1",
+      "transitions": 3
+    }
+  },
+  {
+    "task_id": "circuit_009_conn_direct",
+    "domain": "circuit_schematic",
+    "question_type": "connectivity_exists",
+    "question_text": "Is component 'L1' directly wired to component 'C3' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\circuit_schematic_009_50.png",
+    "visual_evidence_summary": "Direct wiring check between L1 at (3, 1) and C3 at (4, 3). Edge exists: False.",
+    "graph_metadata": {
+      "node_u": "L1",
+      "node_v": "C3",
       "is_direct": false
     }
   },
   {
-    "task_id": "task_009_count",
+    "task_id": "circuit_009_count",
     "domain": "circuit_schematic",
     "question_type": "component_count",
     "question_text": "How many 'Diode' components (labeled with prefix 'D') are present in this schematic? Provide only the integer count.",
     "reference_answer": 0,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_009_50.png",
+    "image_filename": "images\\circuit_schematic_009_50.png",
     "visual_evidence_summary": "Count of Diode components in graph: 0.",
     "graph_metadata": {
       "target_type": "Diode",
@@ -586,66 +480,222 @@
     }
   },
   {
-    "task_id": "task_009_path_hops",
+    "task_id": "circuit_009_path_hops",
     "domain": "circuit_schematic",
     "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'R1' to component 'L1'? Provide only the integer number.",
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'L1' to component 'C3'? Provide only the integer number.",
     "reference_answer": 2,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_009_50.png",
-    "visual_evidence_summary": "Shortest path from R1 to L1: R1 -> C1 -> L1. Total hops: 2.",
+    "image_filename": "images\\circuit_schematic_009_50.png",
+    "visual_evidence_summary": "Shortest path from L1 to C3: L1 -> C1 -> C3. Total hops: 2.",
     "graph_metadata": {
-      "source": "R1",
-      "target": "L1",
+      "source": "L1",
+      "target": "C3",
       "hops": 2,
       "path": [
-        "R1",
+        "L1",
         "C1",
-        "L1"
+        "C3"
       ]
     }
   },
   {
-    "task_id": "task_009_neighbor",
+    "task_id": "circuit_009_neighbor",
     "domain": "circuit_schematic",
     "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'R1'. Provide only the component label (e.g. R1, C1).",
+    "question_text": "Name any one component directly connected by a single wire to 'L1'. Provide only the component label (e.g. R1, C1).",
     "reference_answer": [
-      "C1"
+      "C1",
+      "R1"
     ],
     "answer_format": "string",
-    "image_filename": "images\\schematic_batch_009_50.png",
-    "visual_evidence_summary": "Neighbors of R1: ['C1'].",
+    "image_filename": "images\\circuit_schematic_009_50.png",
+    "visual_evidence_summary": "Neighbors of L1: ['C1', 'R1'].",
     "graph_metadata": {
-      "source": "R1",
+      "source": "L1",
       "valid_neighbors": [
-        "C1"
+        "C1",
+        "R1"
       ]
     }
   },
   {
-    "task_id": "task_010_conn_direct",
-    "domain": "circuit_schematic",
+    "task_id": "arch_010_doorway",
+    "domain": "floor_plan",
     "question_type": "connectivity_exists",
-    "question_text": "Is component 'SW3' directly wired to component 'L1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "question_text": "Can an occupant walk directly from room 'LOB-1' into room 'LOB-2' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
     "reference_answer": "No",
     "answer_format": "boolean",
-    "image_filename": "images\\schematic_batch_010_51.png",
-    "visual_evidence_summary": "Direct wiring check between SW3 at (3, 1) and L1 at (2, 2). Edge exists: False.",
+    "image_filename": "images\\floor_plan_010_51.png",
+    "visual_evidence_summary": "Direct doorway between LOB-1 and LOB-2. Edge exists: False.",
     "graph_metadata": {
-      "node_u": "SW3",
-      "node_v": "L1",
+      "room_u": "LOB-1",
+      "room_v": "LOB-2",
+      "direct_door": false
+    }
+  },
+  {
+    "task_id": "arch_010_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 3,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_010_51.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 3.",
+    "graph_metadata": {
+      "exit_count": 3
+    }
+  },
+  {
+    "task_id": "arch_010_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'LOB-1' to room 'LOB-2'? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_010_51.png",
+    "visual_evidence_summary": "Shortest route from LOB-1 to LOB-2: LOB-1 -> EXIT-1 -> LOB-2. Transitions: 2.",
+    "graph_metadata": {
+      "source": "LOB-1",
+      "destination": "LOB-2",
+      "transitions": 2
+    }
+  },
+  {
+    "task_id": "circuit_011_conn_direct",
+    "domain": "circuit_schematic",
+    "question_type": "connectivity_exists",
+    "question_text": "Is component 'R2' directly wired to component 'D1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "reference_answer": "Yes",
+    "answer_format": "boolean",
+    "image_filename": "images\\circuit_schematic_011_52.png",
+    "visual_evidence_summary": "Direct wiring check between R2 at (2, 1) and D1 at (1, 3). Edge exists: True.",
+    "graph_metadata": {
+      "node_u": "R2",
+      "node_v": "D1",
+      "is_direct": true
+    }
+  },
+  {
+    "task_id": "circuit_011_count",
+    "domain": "circuit_schematic",
+    "question_type": "component_count",
+    "question_text": "How many 'Switch' components (labeled with prefix 'SW') are present in this schematic? Provide only the integer count.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_011_52.png",
+    "visual_evidence_summary": "Count of Switch components in graph: 1.",
+    "graph_metadata": {
+      "target_type": "Switch",
+      "count": 1
+    }
+  },
+  {
+    "task_id": "circuit_011_path_hops",
+    "domain": "circuit_schematic",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'R2' to component 'D1'? Provide only the integer number.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_011_52.png",
+    "visual_evidence_summary": "Shortest path from R2 to D1: R2 -> D1. Total hops: 1.",
+    "graph_metadata": {
+      "source": "R2",
+      "target": "D1",
+      "hops": 1,
+      "path": [
+        "R2",
+        "D1"
+      ]
+    }
+  },
+  {
+    "task_id": "circuit_011_neighbor",
+    "domain": "circuit_schematic",
+    "question_type": "neighbor_id",
+    "question_text": "Name any one component directly connected by a single wire to 'R2'. Provide only the component label (e.g. R1, C1).",
+    "reference_answer": [
+      "D1",
+      "SW1"
+    ],
+    "answer_format": "string",
+    "image_filename": "images\\circuit_schematic_011_52.png",
+    "visual_evidence_summary": "Neighbors of R2: ['D1', 'SW1'].",
+    "graph_metadata": {
+      "source": "R2",
+      "valid_neighbors": [
+        "D1",
+        "SW1"
+      ]
+    }
+  },
+  {
+    "task_id": "arch_012_doorway",
+    "domain": "floor_plan",
+    "question_type": "connectivity_exists",
+    "question_text": "Can an occupant walk directly from room 'EXIT-1' into room 'OFF-1' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\floor_plan_012_53.png",
+    "visual_evidence_summary": "Direct doorway between EXIT-1 and OFF-1. Edge exists: False.",
+    "graph_metadata": {
+      "room_u": "EXIT-1",
+      "room_v": "OFF-1",
+      "direct_door": false
+    }
+  },
+  {
+    "task_id": "arch_012_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_012_53.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
+    "graph_metadata": {
+      "exit_count": 2
+    }
+  },
+  {
+    "task_id": "arch_012_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'EXIT-1' to room 'OFF-1'? Provide only the integer count.",
+    "reference_answer": 3,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_012_53.png",
+    "visual_evidence_summary": "Shortest route from EXIT-1 to OFF-1: EXIT-1 -> SRV-1 -> EXIT-2 -> OFF-1. Transitions: 3.",
+    "graph_metadata": {
+      "source": "EXIT-1",
+      "destination": "OFF-1",
+      "transitions": 3
+    }
+  },
+  {
+    "task_id": "circuit_013_conn_direct",
+    "domain": "circuit_schematic",
+    "question_type": "connectivity_exists",
+    "question_text": "Is component 'BAT1' directly wired to component 'R2' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\circuit_schematic_013_54.png",
+    "visual_evidence_summary": "Direct wiring check between BAT1 at (1, 1) and R2 at (1, 2). Edge exists: False.",
+    "graph_metadata": {
+      "node_u": "BAT1",
+      "node_v": "R2",
       "is_direct": false
     }
   },
   {
-    "task_id": "task_010_count",
+    "task_id": "circuit_013_count",
     "domain": "circuit_schematic",
     "question_type": "component_count",
     "question_text": "How many 'Capacitor' components (labeled with prefix 'C') are present in this schematic? Provide only the integer count.",
     "reference_answer": 0,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_010_51.png",
+    "image_filename": "images\\circuit_schematic_013_54.png",
     "visual_evidence_summary": "Count of Capacitor components in graph: 0.",
     "graph_metadata": {
       "target_type": "Capacitor",
@@ -653,43 +703,195 @@
     }
   },
   {
-    "task_id": "task_010_path_hops",
+    "task_id": "circuit_013_path_hops",
     "domain": "circuit_schematic",
     "question_type": "shortest_path_length",
-    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'SW3' to component 'L1'? Provide only the integer number.",
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'BAT1' to component 'R2'? Provide only the integer number.",
     "reference_answer": 2,
     "answer_format": "integer",
-    "image_filename": "images\\schematic_batch_010_51.png",
-    "visual_evidence_summary": "Shortest path from SW3 to L1: SW3 -> GND2 -> L1. Total hops: 2.",
+    "image_filename": "images\\circuit_schematic_013_54.png",
+    "visual_evidence_summary": "Shortest path from BAT1 to R2: BAT1 -> R1 -> R2. Total hops: 2.",
     "graph_metadata": {
-      "source": "SW3",
-      "target": "L1",
+      "source": "BAT1",
+      "target": "R2",
       "hops": 2,
       "path": [
-        "SW3",
-        "GND2",
-        "L1"
+        "BAT1",
+        "R1",
+        "R2"
       ]
     }
   },
   {
-    "task_id": "task_010_neighbor",
+    "task_id": "circuit_013_neighbor",
     "domain": "circuit_schematic",
     "question_type": "neighbor_id",
-    "question_text": "Name any one component directly connected by a single wire to 'SW3'. Provide only the component label (e.g. R1, C1).",
+    "question_text": "Name any one component directly connected by a single wire to 'BAT1'. Provide only the component label (e.g. R1, C1).",
     "reference_answer": [
-      "SW1",
-      "GND2"
+      "D1",
+      "R1"
     ],
     "answer_format": "string",
-    "image_filename": "images\\schematic_batch_010_51.png",
-    "visual_evidence_summary": "Neighbors of SW3: ['SW1', 'GND2'].",
+    "image_filename": "images\\circuit_schematic_013_54.png",
+    "visual_evidence_summary": "Neighbors of BAT1: ['D1', 'R1'].",
     "graph_metadata": {
-      "source": "SW3",
+      "source": "BAT1",
       "valid_neighbors": [
-        "SW1",
-        "GND2"
+        "D1",
+        "R1"
       ]
+    }
+  },
+  {
+    "task_id": "arch_014_doorway",
+    "domain": "floor_plan",
+    "question_type": "connectivity_exists",
+    "question_text": "Can an occupant walk directly from room 'EXIT-1' into room 'EXIT-3' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\floor_plan_014_55.png",
+    "visual_evidence_summary": "Direct doorway between EXIT-1 and EXIT-3. Edge exists: False.",
+    "graph_metadata": {
+      "room_u": "EXIT-1",
+      "room_v": "EXIT-3",
+      "direct_door": false
+    }
+  },
+  {
+    "task_id": "arch_014_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 3,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_014_55.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 3.",
+    "graph_metadata": {
+      "exit_count": 3
+    }
+  },
+  {
+    "task_id": "arch_014_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'EXIT-1' to room 'EXIT-3'? Provide only the integer count.",
+    "reference_answer": 3,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_014_55.png",
+    "visual_evidence_summary": "Shortest route from EXIT-1 to EXIT-3: EXIT-1 -> LOB-1 -> EXIT-2 -> EXIT-3. Transitions: 3.",
+    "graph_metadata": {
+      "source": "EXIT-1",
+      "destination": "EXIT-3",
+      "transitions": 3
+    }
+  },
+  {
+    "task_id": "circuit_015_conn_direct",
+    "domain": "circuit_schematic",
+    "question_type": "connectivity_exists",
+    "question_text": "Is component 'C1' directly wired to component 'GND1' without passing through any intermediate component? Answer strictly with 'Yes' or 'No'.",
+    "reference_answer": "Yes",
+    "answer_format": "boolean",
+    "image_filename": "images\\circuit_schematic_015_56.png",
+    "visual_evidence_summary": "Direct wiring check between C1 at (1, 1) and GND1 at (4, 1). Edge exists: True.",
+    "graph_metadata": {
+      "node_u": "C1",
+      "node_v": "GND1",
+      "is_direct": true
+    }
+  },
+  {
+    "task_id": "circuit_015_count",
+    "domain": "circuit_schematic",
+    "question_type": "component_count",
+    "question_text": "How many 'Diode' components (labeled with prefix 'D') are present in this schematic? Provide only the integer count.",
+    "reference_answer": 0,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_015_56.png",
+    "visual_evidence_summary": "Count of Diode components in graph: 0.",
+    "graph_metadata": {
+      "target_type": "Diode",
+      "count": 0
+    }
+  },
+  {
+    "task_id": "circuit_015_path_hops",
+    "domain": "circuit_schematic",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of wire hops (branches) required to trace a signal from component 'C1' to component 'GND1'? Provide only the integer number.",
+    "reference_answer": 1,
+    "answer_format": "integer",
+    "image_filename": "images\\circuit_schematic_015_56.png",
+    "visual_evidence_summary": "Shortest path from C1 to GND1: C1 -> GND1. Total hops: 1.",
+    "graph_metadata": {
+      "source": "C1",
+      "target": "GND1",
+      "hops": 1,
+      "path": [
+        "C1",
+        "GND1"
+      ]
+    }
+  },
+  {
+    "task_id": "circuit_015_neighbor",
+    "domain": "circuit_schematic",
+    "question_type": "neighbor_id",
+    "question_text": "Name any one component directly connected by a single wire to 'C1'. Provide only the component label (e.g. R1, C1).",
+    "reference_answer": [
+      "GND1"
+    ],
+    "answer_format": "string",
+    "image_filename": "images\\circuit_schematic_015_56.png",
+    "visual_evidence_summary": "Neighbors of C1: ['GND1'].",
+    "graph_metadata": {
+      "source": "C1",
+      "valid_neighbors": [
+        "GND1"
+      ]
+    }
+  },
+  {
+    "task_id": "arch_016_doorway",
+    "domain": "floor_plan",
+    "question_type": "connectivity_exists",
+    "question_text": "Can an occupant walk directly from room 'EXIT-1' into room 'OFF-1' through a single direct doorway without traversing another room? Answer 'Yes' or 'No'.",
+    "reference_answer": "No",
+    "answer_format": "boolean",
+    "image_filename": "images\\floor_plan_016_57.png",
+    "visual_evidence_summary": "Direct doorway between EXIT-1 and OFF-1. Edge exists: False.",
+    "graph_metadata": {
+      "room_u": "EXIT-1",
+      "room_v": "OFF-1",
+      "direct_door": false
+    }
+  },
+  {
+    "task_id": "arch_016_exit_count",
+    "domain": "floor_plan",
+    "question_type": "component_count",
+    "question_text": "How many designated Emergency Exits (marked with prefix 'EXIT') are present on this architectural floor plan? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_016_57.png",
+    "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
+    "graph_metadata": {
+      "exit_count": 2
+    }
+  },
+  {
+    "task_id": "arch_016_egress_hops",
+    "domain": "floor_plan",
+    "question_type": "shortest_path_length",
+    "question_text": "What is the minimum number of room-to-room transitions required to travel from room 'EXIT-1' to room 'OFF-1'? Provide only the integer count.",
+    "reference_answer": 2,
+    "answer_format": "integer",
+    "image_filename": "images\\floor_plan_016_57.png",
+    "visual_evidence_summary": "Shortest route from EXIT-1 to OFF-1: EXIT-1 -> LOB-3 -> OFF-1. Transitions: 2.",
+    "graph_metadata": {
+      "source": "EXIT-1",
+      "destination": "OFF-1",
+      "transitions": 2
     }
   }
 ]
