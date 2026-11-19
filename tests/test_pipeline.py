@@ -538,3 +538,390 @@ def test_singular_identical_voltage_sources():
     res = net.solve()
     assert res.status == "SINGULAR_MATRIX"
     assert res.matrix_rank < res.matrix_size
+
+
+# --- Phase 4 Step 1: Strict Final-Answer Extraction Tests ---
+
+def test_verifier_integer_with_numbered_rationale():
+    # Numbered list '1.', '2.', '3.' with final answer 0
+    text_with_cot = (
+        "### Step-by-Step Topological Verification:\n"
+        "1. Target Components: Identified from inquiry.\n"
+        "2. Physical Trace Analysis: Tracing planar conductive pathways.\n"
+        "3. Mathematical Graph Evidence: Count of Diode components in graph: 0.\n"
+        "4. Verification Outcome: Continuity confirmed.\n\n"
+        "### Final Answer:\n0"
+    )
+    ok, parsed, err = AnswerVerifier.verify(text_with_cot, 0, QuestionType.COMPONENT_COUNT)
+    assert ok is True
+    assert parsed == 0
+    assert err is None
+
+    # Numbered list with shortest path hops = 3
+    text_hops = (
+        "1. Start at BAT1.\n"
+        "2. Hop through R1.\n"
+        "3. Hop through SW1.\n"
+        "4. Reach Ground.\n\n"
+        "### Final Answer:\n3"
+    )
+    ok, parsed, err = AnswerVerifier.verify(text_hops, 3, QuestionType.SHORTEST_PATH_LENGTH)
+    assert ok is True
+    assert parsed == 3
+    assert err is None
+
+def test_verifier_boolean_misleading_rationale_keywords():
+    # Rationale contains the word "connected", but the final answer is "No"
+    misleading_text = (
+        "Based on visual appearance, the components look connected because of proximity in the diagram. "
+        "However, physical trace analysis reveals the branch is broken.\n\n"
+        "### Final Answer:\nNo"
+    )
+    ok, parsed, err = AnswerVerifier.verify(misleading_text, "No", QuestionType.CONNECTIVITY_EXISTS)
+    assert ok is True
+    assert parsed == "No"
+    assert err is None
+
+    # Mismatch check: Reference is "Yes", but model answered "No" despite "connected" in text
+    ok_mismatch, parsed_m, err_m = AnswerVerifier.verify(misleading_text, "Yes", QuestionType.CONNECTIVITY_EXISTS)
+    assert ok_mismatch is False
+    assert parsed_m == "No"
+    assert err_m == "CONNECTIVITY_MISMATCH"
+
+def test_verifier_missing_final_answer_marker_plain_compat():
+    # Plain string without marker continues to work (backward compatibility)
+    ok1, val1, _ = AnswerVerifier.verify("Yes", "Yes", QuestionType.CONNECTIVITY_EXISTS)
+    assert ok1 is True
+    assert val1 == "Yes"
+
+    ok2, val2, _ = AnswerVerifier.verify("There are 5 components present", 5, QuestionType.COMPONENT_COUNT)
+    assert ok2 is True
+    assert val2 == 5
+
+    ok3, val3, _ = AnswerVerifier.verify("R1", ["R1", "C2"], QuestionType.NEIGHBOR_IDENTIFICATION)
+    assert ok3 is True
+    assert val3 == "R1"
+
+def test_verifier_empty_final_answer_section():
+    # Marker present, but answer section is empty
+    empty_marker = "Some detailed reasoning steps...\n\n### Final Answer:\n   \n"
+    ok, parsed, err = AnswerVerifier.verify(empty_marker, "Yes", QuestionType.CONNECTIVITY_EXISTS)
+    assert ok is False
+    assert parsed is None
+    assert err == "EMPTY_FINAL_ANSWER"
+
+def test_verifier_multiline_whitespace_final_answer():
+    multiline_text = (
+        "Analysis complete.\n\n"
+        "### Final Answer:\n\n"
+        "   Yes   \n\n"
+    )
+    ok, parsed, err = AnswerVerifier.verify(multiline_text, "Yes", QuestionType.CONNECTIVITY_EXISTS)
+    assert ok is True
+    assert parsed == "Yes"
+
+    # Multiline list for neighbor
+    multiline_neighbor = (
+        "Identified neighbors:\n\n"
+        "### Final Answer:\n"
+        "['SW1', 'C2', 'R3']\n"
+    )
+    ok_n, parsed_n, err_n = AnswerVerifier.verify(multiline_neighbor, ["SW1", "C2", "R3"], QuestionType.NEIGHBOR_IDENTIFICATION)
+    assert ok_n is True
+    assert parsed_n == "SW1"
+
+
+# --- Phase 4 Step 2: Dual-Format DPO & Verifier-Backed Exporter Tests ---
+
+def test_rlvf_dpo_legacy_format_and_verification(tmp_path):
+    mock_tasks = [
+        {
+            "task_id": "legacy_bool_yes",
+            "question_type": "connectivity_exists",
+            "question_text": "Is R1 wired to C1?",
+            "image_filename": "images\\circuit_01.png",
+            "reference_answer": "Yes",
+            "visual_evidence_summary": "Direct wire exists",
+            "domain": "circuit_schematic"
+        },
+        {
+            "task_id": "legacy_bool_no",
+            "question_type": "connectivity_exists",
+            "question_text": "Is R1 wired to GND1?",
+            "image_filename": "images/circuit_02.png",
+            "reference_answer": "No",
+            "visual_evidence_summary": "No wire path",
+            "domain": "circuit_schematic"
+        },
+        {
+            "task_id": "legacy_count",
+            "question_type": "component_count",
+            "question_text": "How many resistors are in this circuit?",
+            "image_filename": "images/circuit_03.png",
+            "reference_answer": 4,
+            "visual_evidence_summary": "4 resistor glyphs found",
+            "domain": "circuit_schematic"
+        },
+        {
+            "task_id": "legacy_neighbor",
+            "question_type": "neighbor_id",
+            "question_text": "Name one component connected to R1.",
+            "image_filename": "images/circuit_04.png",
+            "reference_answer": ["SW1", "C2"],
+            "visual_evidence_summary": "SW1 and C2 connected",
+            "domain": "circuit_schematic",
+            "graph_metadata": {
+                "source": "R1",
+                "serialized_graph": {
+                    "nodes": [
+                        {"id": 0, "label": "R1"},
+                        {"id": 1, "label": "SW1"},
+                        {"id": 2, "label": "C2"},
+                        {"id": 3, "label": "BAT1"}
+                    ]
+                }
+            }
+        }
+    ]
+
+    out_file = os.path.join(str(tmp_path), "test_legacy_dpo.jsonl")
+    result_path = RLVFDatasetExporter.convert_tasks_to_dpo(mock_tasks, out_file)
+
+    assert isinstance(result_path, str)
+    assert os.path.exists(result_path)
+
+    with open(result_path, "r", encoding="utf-8") as f:
+        lines = [json.loads(line) for line in f]
+
+    assert len(lines) == 4
+    expected_keys = {"task_id", "image_path", "domain", "prompt", "chosen", "rejected", "verification_source"}
+
+    for item, src_t in zip(lines, mock_tasks):
+        assert set(item.keys()) == expected_keys
+        # Check POSIX path normalization (no backslashes)
+        assert "\\" not in item["image_path"]
+        assert item["image_path"].startswith("images/")
+        assert item["prompt"].startswith("<image>\n")
+
+        # Verify chosen passes and rejected fails AnswerVerifier
+        q_type = QuestionType(src_t["question_type"])
+        ref_ans = src_t["reference_answer"]
+
+        c_ok, c_val, c_err = AnswerVerifier.verify(item["chosen"], ref_ans, q_type)
+        assert c_ok is True, f"Chosen failed verification for {item['task_id']}: {c_err}"
+
+        r_ok, r_val, r_err = AnswerVerifier.verify(item["rejected"], ref_ans, q_type)
+        assert r_ok is False, f"Rejected unexpectedly passed verification for {item['task_id']}: {r_val}"
+
+def test_rlvf_dpo_conversational_export_schema(tmp_path):
+    mock_tasks = [
+        {
+            "task_id": "conv_task_1",
+            "question_type": "connectivity_exists",
+            "question_text": "Is R1 connected to C1?",
+            "image_filename": "images\\circuit_conv.png",
+            "reference_answer": "Yes",
+            "answer_format": "boolean",
+            "visual_evidence_summary": "Direct wire",
+            "domain": "circuit_schematic"
+        }
+    ]
+
+    out_file = os.path.join(str(tmp_path), "test_conv_dpo.jsonl")
+    report = RLVFDatasetExporter.export_dpo_dataset(mock_tasks, out_file, dataset_version="2.0.0")
+
+    assert report["total_source_tasks"] == 1
+    assert report["exported_preference_pairs"] == 1
+    assert report["excluded_tasks"] == 0
+    assert report["chosen_verification_pass_count"] == 1
+    assert report["rejected_verification_failure_count"] == 1
+    assert report["duplicate_ids_count"] == 0
+    assert report["dataset_version"] == "2.0.0"
+
+    with open(out_file, "r", encoding="utf-8") as f:
+        record = json.loads(f.readline())
+
+    expected_record_keys = {
+        "id", "domain", "task_type", "images", "prompt",
+        "chosen", "rejected", "chosen_text", "rejected_text", "metadata"
+    }
+    assert set(record.keys()) == expected_record_keys
+    assert record["id"] == "conv_task_1"
+    assert record["domain"] == "circuit_schematic"
+    assert record["task_type"] == "connectivity_exists"
+    assert record["images"] == ["images/circuit_conv.png"]
+    assert "\\" not in record["images"][0]
+
+    # Check prompt structure
+    assert isinstance(record["prompt"], list) and len(record["prompt"]) == 1
+    assert record["prompt"][0]["role"] == "user"
+    assert record["prompt"][0]["content"] == [
+        {"type": "image"},
+        {"type": "text", "text": "Is R1 connected to C1?"}
+    ]
+
+    # Check chosen / rejected role messages
+    assert record["chosen"][0]["role"] == "assistant"
+    assert record["rejected"][0]["role"] == "assistant"
+    assert record["chosen_text"] == record["chosen"][0]["content"]
+    assert record["rejected_text"] == record["rejected"][0]["content"]
+
+    # Check metadata
+    meta = record["metadata"]
+    assert meta["dataset_version"] == "2.0.0"
+    assert meta["verifier_version"] == "AnswerVerifier-v2"
+    assert meta["chosen_verification"]["is_correct"] is True
+    assert meta["rejected_verification"]["is_correct"] is False
+
+def test_rlvf_dpo_full_56_benchmark_tasks(tmp_path):
+    with open("dataset/tasks.json", "r", encoding="utf-8") as f:
+        tasks = json.load(f)
+
+    assert len(tasks) == 56
+
+    out_file = os.path.join(str(tmp_path), "bench_56_dpo.jsonl")
+    report = RLVFDatasetExporter.export_dpo_dataset(tasks, out_file)
+
+    assert report["total_source_tasks"] == 56
+    assert report["exported_preference_pairs"] == 56
+    assert report["excluded_tasks"] == 0
+    assert report["chosen_verification_pass_count"] == 56
+    assert report["rejected_verification_failure_count"] == 56
+    assert report["duplicate_ids_count"] == 0
+
+    with open(out_file, "r", encoding="utf-8") as f:
+        records = [json.loads(line) for line in f]
+
+    assert len(records) == 56
+    task_types_found = {r["task_type"] for r in records}
+    assert "connectivity_exists" in task_types_found
+    assert "component_count" in task_types_found
+    assert "shortest_path_length" in task_types_found
+    assert "neighbor_id" in task_types_found
+
+    # Spot-check every single record passes verifier
+    for r in records:
+        assert r["metadata"]["chosen_verification"]["is_correct"] is True
+        assert r["metadata"]["rejected_verification"]["is_correct"] is False
+        assert "\\" not in r["images"][0]
+
+def test_rlvf_dpo_path_traversal_and_safety(tmp_path):
+    malicious_tasks = [
+        {
+            "task_id": "mal_1",
+            "question_type": "connectivity_exists",
+            "question_text": "Traverse up",
+            "image_filename": "../../secret.txt",
+            "reference_answer": "Yes"
+        },
+        {
+            "task_id": "mal_2",
+            "question_type": "connectivity_exists",
+            "question_text": "Absolute root",
+            "image_filename": "/etc/shadow",
+            "reference_answer": "Yes"
+        },
+        {
+            "task_id": "mal_3",
+            "question_type": "connectivity_exists",
+            "question_text": "Drive letter",
+            "image_filename": "C:\\Windows\\System32\\cmd.exe",
+            "reference_answer": "Yes"
+        },
+        {
+            "task_id": "safe_1",
+            "question_type": "connectivity_exists",
+            "question_text": "Safe relative",
+            "image_filename": "images/valid.png",
+            "reference_answer": "Yes"
+        }
+    ]
+
+    out_file = os.path.join(str(tmp_path), "traversal_test.jsonl")
+    report = RLVFDatasetExporter.export_dpo_dataset(malicious_tasks, out_file)
+
+    assert report["total_source_tasks"] == 4
+    assert report["exported_preference_pairs"] == 1
+    assert report["excluded_tasks"] == 3
+    assert len(report["exclusion_details"]) == 3
+    for exc in report["exclusion_details"]:
+        assert "PATH_TRAVERSAL_DETECTED" in exc["reason"]
+
+    # Verify legacy convert_tasks_to_dpo raises ValueError on path traversal
+    with pytest.raises(ValueError, match="Unsafe image path detected"):
+        RLVFDatasetExporter.convert_tasks_to_dpo(malicious_tasks[:1], os.path.join(str(tmp_path), "unsafe.jsonl"))
+
+def test_rlvf_dpo_train_test_split_and_determinism(tmp_path):
+    tasks = [
+        {
+            "task_id": f"split_task_{i}",
+            "question_type": "connectivity_exists",
+            "question_text": f"Is node {i} connected?",
+            "image_filename": f"images/task_{i}.png",
+            "reference_answer": "Yes" if i % 2 == 0 else "No"
+        }
+        for i in range(10)
+    ]
+
+    out_file = os.path.join(str(tmp_path), "all.jsonl")
+    report1 = RLVFDatasetExporter.export_dpo_dataset(tasks, out_file, split_ratio=0.8)
+
+    assert report1["exported_preference_pairs"] == 10
+    assert report1["train_count"] == 8
+    assert report1["test_count"] == 2
+    assert os.path.exists(report1["train_file"])
+    assert os.path.exists(report1["test_file"])
+
+    with open(report1["train_file"], "r", encoding="utf-8") as f:
+        train_ids = {json.loads(line)["id"] for line in f}
+    with open(report1["test_file"], "r", encoding="utf-8") as f:
+        test_ids = {json.loads(line)["id"] for line in f}
+
+    assert len(train_ids) == 8
+    assert len(test_ids) == 2
+    assert train_ids.isdisjoint(test_ids)
+
+    # Determinism check: Second run produces identical content
+    out_file2 = os.path.join(str(tmp_path), "all_run2.jsonl")
+    report2 = RLVFDatasetExporter.export_dpo_dataset(tasks, out_file2, split_ratio=0.8)
+
+    assert open(out_file, "r", encoding="utf-8").read() == open(out_file2, "r", encoding="utf-8").read()
+    assert open(report1["train_file"], "r", encoding="utf-8").read() == open(report2["train_file"], "r", encoding="utf-8").read()
+    assert open(report1["test_file"], "r", encoding="utf-8").read() == open(report2["test_file"], "r", encoding="utf-8").read()
+
+def test_rlvf_dpo_duplicate_id_and_missing_id_handling(tmp_path):
+    tasks = [
+        {
+            "task_id": "dup_task_1",
+            "question_type": "connectivity_exists",
+            "question_text": "First occurrence",
+            "image_filename": "images/task_1.png",
+            "reference_answer": "Yes"
+        },
+        {
+            "task_id": "dup_task_1",
+            "question_type": "connectivity_exists",
+            "question_text": "Duplicate occurrence",
+            "image_filename": "images/task_1_dup.png",
+            "reference_answer": "Yes"
+        },
+        {
+            "task_id": "",
+            "question_type": "connectivity_exists",
+            "question_text": "Missing id",
+            "image_filename": "images/task_empty.png",
+            "reference_answer": "Yes"
+        }
+    ]
+
+    out_file = os.path.join(str(tmp_path), "dup_test.jsonl")
+    report = RLVFDatasetExporter.export_dpo_dataset(tasks, out_file)
+
+    assert report["total_source_tasks"] == 3
+    assert report["exported_preference_pairs"] == 1
+    assert report["duplicate_ids_count"] == 1
+    assert report["excluded_tasks"] == 2
+    reasons = [e["reason"] for e in report["exclusion_details"]]
+    assert "DUPLICATE_TASK_ID" in reasons
+    assert "MISSING_TASK_ID" in reasons
+
