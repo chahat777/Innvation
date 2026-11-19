@@ -381,3 +381,160 @@ def test_multi_model_arena_runner_overview_and_simulation():
     )
     assert sim_res.status == "SIMULATED"
     assert "simulation" in sim_res.error_message.lower()
+
+
+# --- Phase 3: Physical Law Matrix Engine Tests (KCL, KVL, MNA, Ohm's Law) ---
+from src.physics_simulator import CircuitBranch, CircuitSolveResult, ElectricalNetwork
+
+def test_voltage_divider_analytical_solution():
+    net = ElectricalNetwork(ground_node="GND")
+    net.add_voltage_source("BAT1", "N1", "GND", 10.0)
+    net.add_resistor("R1", "N1", "N2", 100.0)
+    net.add_resistor("R2", "N2", "GND", 100.0)
+    
+    res = net.solve()
+    assert res.status == "SOLVED"
+    assert abs(res.node_voltages["N1"] - 10.0) < 1e-9
+    assert abs(res.node_voltages["N2"] - 5.0) < 1e-9
+    assert abs(res.node_voltages["GND"] - 0.0) < 1e-9
+    assert abs(res.branch_currents["R1"] - 0.05) < 1e-9
+    assert abs(res.branch_currents["R2"] - 0.05) < 1e-9
+    assert abs(res.branch_currents["BAT1"] - (-0.05)) < 1e-9
+    assert res.max_kcl_residual < 1e-12
+    assert res.max_ohms_residual < 1e-12
+    assert res.matrix_rank == res.matrix_size
+
+def test_parallel_resistors_current_division():
+    net = ElectricalNetwork(ground_node="GND")
+    net.add_voltage_source("BAT1", "N1", "GND", 12.0)
+    net.add_resistor("R1", "N1", "GND", 60.0)
+    net.add_resistor("R2", "N1", "GND", 30.0)
+    
+    res = net.solve()
+    assert res.status == "SOLVED"
+    assert abs(res.branch_currents["R1"] - 0.2) < 1e-9
+    assert abs(res.branch_currents["R2"] - 0.4) < 1e-9
+    assert abs(res.branch_currents["BAT1"] - (-0.6)) < 1e-9
+    assert res.max_kcl_residual < 1e-12
+
+def test_bridge_network_kvl_cycles():
+    net = ElectricalNetwork(ground_node="GND")
+    net.add_voltage_source("BAT1", "N1", "GND", 10.0)
+    net.add_resistor("R1", "N1", "N2", 100.0)
+    net.add_resistor("R2", "N2", "GND", 200.0)
+    net.add_resistor("R3", "N1", "N3", 300.0)
+    net.add_resistor("R4", "N3", "GND", 400.0)
+    net.add_resistor("R5", "N2", "N3", 50.0)
+    
+    res = net.solve()
+    assert res.status == "SOLVED"
+    assert len(res.kvl_residuals) == 3
+    assert res.max_kvl_residual < 1e-12
+    assert res.max_kcl_residual < 1e-12
+    assert res.max_ohms_residual < 1e-12
+    assert res.condition_number < 1e6
+
+def test_ideal_switch_open_and_closed():
+    # Closed switch: ideal conduction, 0V drop
+    net_c = ElectricalNetwork(ground_node="GND")
+    net_c.add_voltage_source("BAT1", "N1", "GND", 5.0)
+    net_c.add_switch("SW1", "N1", "N2", is_closed=True)
+    net_c.add_resistor("R1", "N2", "GND", 10.0)
+    res_c = net_c.solve()
+    assert res_c.status == "SOLVED"
+    assert abs(res_c.node_voltages["N2"] - 5.0) < 1e-9
+    assert abs(res_c.branch_currents["R1"] - 0.5) < 1e-9
+    assert abs(res_c.branch_voltages["SW1"] - 0.0) < 1e-9
+
+    # Open switch: 0 current, downstream unpowered
+    net_o = ElectricalNetwork(ground_node="GND")
+    net_o.add_voltage_source("BAT1", "N1", "GND", 5.0)
+    net_o.add_switch("SW1", "N1", "N2", is_closed=False)
+    net_o.add_resistor("R1", "N2", "GND", 10.0)
+    res_o = net_o.solve()
+    assert res_o.status == "SOLVED"
+    assert abs(res_o.node_voltages["N2"] - 0.0) < 1e-9
+    assert abs(res_o.branch_currents["SW1"] - 0.0) < 1e-9
+    assert abs(res_o.branch_currents["R1"] - 0.0) < 1e-9
+
+def test_invalid_circuit_handling():
+    # 1. Missing ground reference
+    net_nognd = ElectricalNetwork(ground_node="MISSING_GND")
+    net_nognd.add_resistor("R1", "N1", "N2", 10.0)
+    res_nognd = net_nognd.solve()
+    assert res_nognd.status == "NO_GROUND_REFERENCE"
+
+    # 2. Negative resistance
+    net_neg = ElectricalNetwork(ground_node="GND")
+    net_neg.add_resistor("R1", "N1", "GND", -10.0)
+    res_neg = net_neg.solve()
+    assert res_neg.status == "INVALID_RESISTANCE"
+
+    # 3. Floating node
+    net_float = ElectricalNetwork(ground_node="GND")
+    net_float.add_voltage_source("BAT1", "N1", "GND", 5.0)
+    net_float.add_resistor("R1", "N1", "GND", 10.0)
+    net_float.add_resistor("R2", "FLOAT_A", "FLOAT_B", 50.0)
+    res_float = net_float.solve()
+    assert res_float.status == "FLOATING_NODE"
+
+    # 4. Conflicting parallel voltage sources
+    net_conflict = ElectricalNetwork(ground_node="GND")
+    net_conflict.add_voltage_source("BAT1", "N1", "GND", 5.0)
+    net_conflict.add_voltage_source("BAT2", "N1", "GND", 12.0)
+    res_conflict = net_conflict.solve()
+    assert res_conflict.status == "CONFLICTING_VOLTAGE_SOURCES"
+
+
+def test_ground_node_kcl_and_tellegen_conservation():
+    net = ElectricalNetwork(ground_node="GND")
+    net.add_voltage_source("BAT1", "N1", "GND", 15.0)
+    net.add_resistor("R1", "N1", "N2", 150.0)
+    net.add_resistor("R2", "N2", "GND", 300.0)
+    net.add_resistor("R3", "N1", "GND", 50.0)
+    
+    res = net.solve()
+    assert res.status == "SOLVED"
+    # Ground node current balance
+    assert "GND" in res.kcl_residuals
+    assert res.kcl_residuals["GND"] < 1e-12
+    # Tellegen power conservation: sum(V_b * I_b) == 0
+    assert res.tellegen_power_residual < 1e-12
+
+def test_non_circular_kvl_constitutive_sum():
+    net = ElectricalNetwork(ground_node="GND")
+    net.add_voltage_source("BAT1", "N1", "GND", 10.0)
+    net.add_resistor("R1", "N1", "N2", 100.0)
+    net.add_resistor("R2", "N2", "GND", 100.0)
+    # Add parallel branch across R2
+    net.add_resistor("R2_PAR", "N2", "GND", 100.0)
+    
+    res = net.solve()
+    assert res.status == "SOLVED"
+    # KVL loops should include both fundamental cycle and parallel branch 2-cycle
+    assert len(res.kvl_residuals) >= 2
+    assert res.max_kvl_residual < 1e-12
+    # Parallel branches must have matching voltage drop
+    assert abs(res.branch_voltages["R2"] - res.branch_voltages["R2_PAR"]) < 1e-12
+
+def test_current_source_circuit():
+    net = ElectricalNetwork(ground_node="GND")
+    net.add_current_source("IS1", "N1", "GND", 2.0)
+    net.add_resistor("R1", "N1", "GND", 10.0)
+    
+    res = net.solve()
+    assert res.status == "SOLVED"
+    assert abs(res.node_voltages["N1"] - (-20.0)) < 1e-9
+    assert abs(res.branch_currents["R1"] - (-2.0)) < 1e-9
+    assert abs(res.branch_currents["IS1"] - 2.0) < 1e-9
+    assert res.max_kcl_residual < 1e-12
+
+def test_singular_identical_voltage_sources():
+    net = ElectricalNetwork(ground_node="GND")
+    net.add_voltage_source("BAT1", "N1", "GND", 5.0)
+    net.add_voltage_source("BAT2", "N1", "GND", 5.0)
+    net.add_resistor("R1", "N1", "GND", 10.0)
+    
+    res = net.solve()
+    assert res.status == "SINGULAR_MATRIX"
+    assert res.matrix_rank < res.matrix_size

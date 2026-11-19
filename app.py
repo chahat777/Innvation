@@ -12,7 +12,7 @@ import networkx as nx
 from src.schema import RenderStyle, TaskDomain, QuestionType
 from src.ground_truth_engine import GroundTruthEngine
 from src.visual_renderer import VisualRenderer
-from src.physics_simulator import PhysicsSimulator
+from src.physics_simulator import PhysicsSimulator, ElectricalNetwork, CircuitBranch, CircuitSolveResult
 from src.adversarial_engine import AdversarialStressEngine
 from src.rlvf_exporter import RLVFDatasetExporter
 from src.symbolic_proof import SymbolicProofEngine
@@ -509,21 +509,33 @@ with tab1:
 
 # ----------------- TAB 2: PHYSICAL SIMULATOR -----------------
 with tab2:
-    st.markdown("### ⚡ Physical Causality & Circuit Simulator")
-    st.write("Go beyond passive 2D image recognition: Simulate live electrical current propagation and test physical law comprehension in VLMs!")
+    st.markdown("### ⚡ Physical Causality & Modified Nodal Analysis (MNA) Matrix Engine")
+    st.write(
+        "Go beyond passive 2D image recognition: Solve live electrical potential fields and branch currents via "
+        "numerical **Modified Nodal Analysis (MNA)**, rigorously verifying **Kirchhoff's Current Law (KCL)**, "
+        "**Kirchhoff's Voltage Law (KVL)**, and **Ohm's Law (V = IR)**."
+    )
     
-    sim_col1, sim_col2 = st.columns([1, 1.4])
+    sim_col1, sim_col2 = st.columns([1.1, 1.3])
     
     with sim_col1:
         st.markdown('<div class="cyber-card">', unsafe_allow_html=True)
-        st.markdown("#### 🎛️ Interactive Circuit Switchboard")
+        st.markdown("#### 🎛️ Interactive Circuit Switchboard & Parameters")
+        
         sw_state = st.radio("Mechanical Switch (SW1) Position:", ["CLOSED (Conductive)", "OPEN (Severed)"])
         is_closed = (sw_state == "CLOSED (Conductive)")
-        
-        inject_current = st.button("⚡ INJECT 5V CURRENT FROM BATTERY (BAT1)", type="primary", use_container_width=True)
+
+        p_c1, p_c2 = st.columns(2)
+        with p_c1:
+            v_bat_val = st.slider("Source Voltage (BAT1):", min_value=1.0, max_value=24.0, value=5.0, step=0.5, format="%.1f V")
+            r1_val = st.slider("Resistor (R1):", min_value=10.0, max_value=500.0, value=100.0, step=10.0, format="%.0f Ω")
+        with p_c2:
+            r_diode_val = st.slider("Diode Load (D1):", min_value=10.0, max_value=500.0, value=50.0, step=10.0, format="%.0f Ω")
+            gnd_ref_name = st.selectbox("Datum Node (Ground):", ["GND1"])
+            
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # Build interactive circuit
+        # Build interactive topological circuit for visual renderer
         G_sim = nx.Graph()
         G_sim.add_node(0, label="BAT1", type="Battery", pos=(1, 2))
         G_sim.add_node(1, label="SW1", type="Switch", pos=(2, 3))
@@ -539,14 +551,29 @@ with tab2:
 
         res_sim = PhysicsSimulator.simulate_circuit_power(G_sim, switch_closed=is_closed)
 
+        # Build and solve numerical MNA network
+        net_mna = ElectricalNetwork(ground_node=gnd_ref_name)
+        net_mna.add_voltage_source("BAT1", "N_BAT", gnd_ref_name, v_bat_val)
+        net_mna.add_switch("SW1", "N_BAT", "N_SW", is_closed=is_closed)
+        net_mna.add_resistor("D1", "N_SW", gnd_ref_name, r_diode_val)
+        net_mna.add_resistor("R1", "N_BAT", gnd_ref_name, r1_val)
+        
+        solve_res = net_mna.solve()
+
+        tot_current_amps = abs(solve_res.branch_currents.get("BAT1", 0.0))
+        tot_power_mw = v_bat_val * tot_current_amps * 1000.0
+
         st.markdown(f"""
         <div class="cyber-card">
-            <span class="glow-tag">KIRCHHOFF CAUSALITY RESULT</span>
-            <div style="margin: 10px 0;">
+            <span class="glow-tag">PHYSICAL CAUSALITY & POWER STATE</span>
+            <div style="margin: 8px 0; font-size:1.05rem;">
                 Circuit State: <b style="color:{'#34d399' if res_sim['has_power_loop'] else '#f87171'};">
                 {'CLOSED POWER LOOP ACTIVE' if res_sim['has_power_loop'] else 'OPEN CIRCUIT (SEVERED)'}</b>
             </div>
-            <div>Indicator Diode (D1) State: <b>{'💡 ILLUMINATED (ACTIVE)' if 'D1' in res_sim['energized_diodes'] else '⚫ DARK (NO POWER)'}</b></div>
+            <div style="margin-bottom:6px;">Indicator Diode (D1) State: <b>{'💡 ILLUMINATED (ACTIVE)' if 'D1' in res_sim['energized_diodes'] else '⚫ DARK (NO POWER)'}</b></div>
+            <div style="color:#94a3b8; font-size:0.85rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:6px;">
+                Total Current Delivered: <b style="color:#38bdf8;">{tot_current_amps*1000:.1f} mA</b> | Power Dissipation: <b style="color:#38bdf8;">{tot_power_mw:.1f} mW</b>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -557,6 +584,57 @@ with tab2:
         sim_img_name = f"sim_circuit_{'closed' if is_closed else 'open'}.png"
         sim_img_path = sim_renderer.render_schematic(G_sim, sim_img_name, style=RenderStyle.BLUEPRINT)
         st.image(Image.open(sim_img_path), caption=f"Physical Circuit Schematic (SW1: {sw_state})", use_container_width=True)
+
+    # --- Live MNA Numerical System Ledger ---
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("#### 🔬 Deterministic Physical Law & Matrix Ledger")
+    
+    if solve_res.status == "SOLVED":
+        stat_c1, stat_c2, stat_c3, stat_c4 = st.columns(4)
+        with stat_c1:
+            st.metric("MNA Solver Status", "✅ CONVERGED", f"Rank {solve_res.matrix_rank}/{solve_res.matrix_size}")
+        with stat_c2:
+            st.metric("Matrix Condition Number", f"{solve_res.condition_number:.2f}", "Stable Regular")
+        with stat_c3:
+            st.metric("Max KCL Residual (A)", f"{solve_res.max_kcl_residual:.1e}", "Charge Conserved")
+        with stat_c4:
+            st.metric("Max KVL Residual (V)", f"{solve_res.max_kvl_residual:.1e}", "Energy Conserved")
+
+        # Nodal Voltages and Branch Currents Tables
+        tab_c1, tab_c2 = st.columns(2)
+        with tab_c1:
+            st.markdown("##### 📍 Nodal Potentials Vector (v)")
+            v_data = []
+            for n_id, n_volt in solve_res.node_voltages.items():
+                role = "Reference Datum (0.0 V)" if n_id == gnd_ref_name else "Independent Junction"
+                v_data.append({
+                    "Node": n_id,
+                    "Potential (V)": f"{n_volt:.4f} V",
+                    "Role": role
+                })
+            st.dataframe(pd.DataFrame(v_data), use_container_width=True, hide_index=True)
+
+        with tab_c2:
+            st.markdown("##### ⚡ Branch Currents & Constitutive Drops")
+            b_data = []
+            for b_id, b_curr in solve_res.branch_currents.items():
+                b_drop = solve_res.branch_voltages.get(b_id, 0.0)
+                b_data.append({
+                    "Branch": b_id,
+                    "Current (mA)": f"{b_curr*1000:.2f} mA",
+                    "Drop (V)": f"{b_drop:.4f} V",
+                    "Ohm Residual": f"{solve_res.ohms_law_residuals.get(b_id, 0.0):.1e}"
+                })
+            st.dataframe(pd.DataFrame(b_data), use_container_width=True, hide_index=True)
+
+        with st.expander("📐 View Full MNA System Matrix (A · x = z)"):
+            if solve_res.mna_matrix and solve_res.mna_vector:
+                m_df = pd.DataFrame(solve_res.mna_matrix)
+                st.markdown("**Block Matrix A:**")
+                st.dataframe(m_df, use_container_width=True)
+                st.markdown(f"**RHS Vector z:** `{solve_res.mna_vector}`")
+    else:
+        st.error(f"Solver Error: {solve_res.status} — {solve_res.error_message}")
 
 # ----------------- TAB 3: ADVERSARIAL RED-TEAMING -----------------
 with tab3:
