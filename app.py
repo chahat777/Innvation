@@ -866,7 +866,7 @@ with tab4:
 
             # Metadata inspector
             if "metadata" in item:
-                with st.expander("🔬 View Training Metadata & Verification Payloads"):
+                if st.checkbox("🔬 Show Training Metadata & Verification Payloads", key=f"meta_{idx}_{task_id}"):
                     st.json(item["metadata"])
 
 # ----------------- TAB 5: BENCHMARK INTELLIGENCE -----------------
