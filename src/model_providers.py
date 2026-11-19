@@ -64,7 +64,13 @@ class BaseVisionProvider:
 
     def is_configured(self) -> bool:
         key = self.get_api_key()
-        return bool(key and key.strip())
+        if not key or not key.strip():
+            return False
+        cleaned = key.strip()
+        # Guard against dummy / placeholder values like sk-xxxx, your_key, etc.
+        if re.match(r'^(sk-[xX]+|your_.*|YOUR_.*|<.*>|TODO.*)$', cleaned):
+            return False
+        return True
 
     @staticmethod
     def encode_image_base64(image_path: str) -> str:
@@ -98,7 +104,7 @@ class GeminiVisionProvider(BaseVisionProvider):
         timeout: float = 30.0
     ) -> ProviderEvaluationResult:
         api_key = self.get_api_key()
-        if not api_key or not api_key.strip():
+        if not self.is_configured():
             return ProviderEvaluationResult(
                 provider=self.provider_name,
                 model_name=self.default_model,
@@ -186,7 +192,7 @@ class OpenAIVisionProvider(BaseVisionProvider):
         timeout: float = 30.0
     ) -> ProviderEvaluationResult:
         api_key = self.get_api_key()
-        if not api_key or not api_key.strip():
+        if not self.is_configured():
             return ProviderEvaluationResult(
                 provider=self.provider_name,
                 model_name=self.default_model,
@@ -268,7 +274,7 @@ class AnthropicVisionProvider(BaseVisionProvider):
         timeout: float = 30.0
     ) -> ProviderEvaluationResult:
         api_key = self.get_api_key()
-        if not api_key or not api_key.strip():
+        if not self.is_configured():
             return ProviderEvaluationResult(
                 provider=self.provider_name,
                 model_name=self.default_model,

@@ -397,7 +397,7 @@ with tab1:
         with ctrl_col2:
             use_simulated_fallback = st.checkbox(
                 "Offline Benchmark Baseline (SIMULATED)",
-                value=False,
+                value=True,
                 help="Inspect pre-computed offline benchmark results from dataset/evaluation_results.json without sending live API requests."
             )
         with ctrl_col3:
