@@ -214,3 +214,170 @@ def test_adversarial_level4_overpass_transformation(tmp_path):
     assert open(base_img_path, "rb").read() == orig_bytes
     # Output is modified
     assert open(out_img_path, "rb").read() != orig_bytes
+
+
+# --- Phase 2: Multi-Model Vision Integration Tests ---
+from unittest.mock import patch, MagicMock
+from src.model_providers import (
+    mask_secrets,
+    ProviderEvaluationResult,
+    GeminiVisionProvider,
+    OpenAIVisionProvider,
+    AnthropicVisionProvider,
+    MultiModelArenaRunner
+)
+
+def test_mask_secrets():
+    raw_msg_gemini = "API Error at endpoint with key AIzaSyD3x9FakeKey1234567890abcdefgh: quota exceeded"
+    sanitized = mask_secrets(raw_msg_gemini)
+    assert "AIzaSyD3x9FakeKey1234567890abcdefgh" not in sanitized
+    assert "REDACTED" in sanitized
+
+    raw_msg_openai = "Failed authentication for key sk-abc123456789012345678901234567890"
+    sanitized_openai = mask_secrets(raw_msg_openai)
+    assert "sk-abc123456789012345678901234567890" not in sanitized_openai
+    assert "REDACTED" in sanitized_openai
+
+    custom_key = "MY_SPECIAL_SUPER_SECRET_KEY_123"
+    sanitized_custom = mask_secrets(f"Error with key {custom_key}", specific_key=custom_key)
+    assert custom_key not in sanitized_custom
+    assert "***REDACTED_KEY***" in sanitized_custom
+
+def test_provider_unconfigured_states(tmp_path):
+    dummy_img = os.path.join(str(tmp_path), "dummy.png")
+    Image.new("RGB", (100, 100)).save(dummy_img)
+
+    with patch.dict(os.environ, {}, clear=True):
+        # Gemini
+        gp = GeminiVisionProvider()
+        assert not gp.is_configured()
+        res_g = gp.evaluate(dummy_img, "Is R1 wired to SW1?", "Yes", QuestionType.CONNECTIVITY_EXISTS)
+        assert res_g.status == "NOT_CONFIGURED"
+        assert res_g.parsed_answer is None
+        assert res_g.is_correct is None
+        assert "GEMINI_API_KEY" in res_g.error_message
+
+        # OpenAI
+        op = OpenAIVisionProvider()
+        assert not op.is_configured()
+        res_o = op.evaluate(dummy_img, "Is R1 wired to SW1?", "Yes", QuestionType.CONNECTIVITY_EXISTS)
+        assert res_o.status == "NOT_CONFIGURED"
+        assert res_o.parsed_answer is None
+        assert res_o.is_correct is None
+        assert "OPENAI_API_KEY" in res_o.error_message
+
+        # Anthropic
+        ap = AnthropicVisionProvider()
+        assert not ap.is_configured()
+        res_a = ap.evaluate(dummy_img, "Is R1 wired to SW1?", "Yes", QuestionType.CONNECTIVITY_EXISTS)
+        assert res_a.status == "NOT_CONFIGURED"
+        assert res_a.parsed_answer is None
+        assert res_a.is_correct is None
+        assert "ANTHROPIC_API_KEY" in res_a.error_message
+
+def test_gemini_vision_provider_mocked(tmp_path):
+    dummy_img = os.path.join(str(tmp_path), "dummy_gemini.png")
+    Image.new("RGB", (100, 100)).save(dummy_img)
+
+    fake_key = "AIzaSyD_TestFakeKey_1234567890abcdef"
+    with patch.dict(os.environ, {"GEMINI_API_KEY": fake_key}):
+        gp = GeminiVisionProvider()
+        assert gp.is_configured()
+
+        mock_resp = MagicMock()
+        mock_resp.text = "Yes, component R1 is directly wired."
+
+        with patch("google.genai.Client") as mock_client_cls:
+            mock_client = MagicMock()
+            mock_client.models.generate_content.return_value = mock_resp
+            mock_client_cls.return_value = mock_client
+
+            res = gp.evaluate(dummy_img, "Is R1 wired to SW1?", "Yes", QuestionType.CONNECTIVITY_EXISTS)
+            assert res.status == "REAL_API"
+            assert res.is_correct is True
+            assert res.parsed_answer == "Yes"
+            assert res.latency_seconds >= 0.0
+
+def test_openai_vision_provider_mocked(tmp_path):
+    dummy_img = os.path.join(str(tmp_path), "dummy_openai.png")
+    Image.new("RGB", (100, 100)).save(dummy_img)
+
+    fake_key = "sk-testOpenAIKey123456789012345678901234567890"
+    with patch.dict(os.environ, {"OPENAI_API_KEY": fake_key}):
+        op = OpenAIVisionProvider()
+        assert op.is_configured()
+
+        mock_choice = MagicMock()
+        mock_choice.message.content = "No, there is no direct path."
+        mock_resp = MagicMock()
+        mock_resp.choices = [mock_choice]
+
+        with patch("openai.OpenAI") as mock_openai_cls:
+            mock_client = MagicMock()
+            mock_client.chat.completions.create.return_value = mock_resp
+            mock_openai_cls.return_value = mock_client
+
+            res = op.evaluate(dummy_img, "Is R1 wired to SW1?", "Yes", QuestionType.CONNECTIVITY_EXISTS)
+            assert res.status == "REAL_API"
+            assert res.is_correct is False
+            assert res.parsed_answer == "No"
+
+def test_anthropic_vision_provider_mocked(tmp_path):
+    dummy_img = os.path.join(str(tmp_path), "dummy_anthropic.png")
+    Image.new("RGB", (100, 100)).save(dummy_img)
+
+    fake_key = "sk-ant-testAnthropicKey12345678901234567890"
+    with patch.dict(os.environ, {"ANTHROPIC_API_KEY": fake_key}):
+        ap = AnthropicVisionProvider()
+        assert ap.is_configured()
+
+        mock_block = MagicMock()
+        mock_block.type = "text"
+        mock_block.text = "There are 3 hops."
+        mock_msg = MagicMock()
+        mock_msg.content = [mock_block]
+
+        with patch("anthropic.Anthropic") as mock_anthropic_cls:
+            mock_client = MagicMock()
+            mock_client.messages.create.return_value = mock_msg
+            mock_anthropic_cls.return_value = mock_client
+
+            res = ap.evaluate(dummy_img, "What is the hop count?", 3, QuestionType.SHORTEST_PATH_LENGTH)
+            assert res.status == "REAL_API"
+            assert res.is_correct is True
+            assert res.parsed_answer == 3
+
+def test_provider_api_error_secret_redaction(tmp_path):
+    dummy_img = os.path.join(str(tmp_path), "dummy_err.png")
+    Image.new("RGB", (100, 100)).save(dummy_img)
+
+    secret_key = "sk-ant-api03-VERY_CONFIDENTIAL_KEY_XYZ123456"
+    with patch.dict(os.environ, {"ANTHROPIC_API_KEY": secret_key}):
+        ap = AnthropicVisionProvider()
+        with patch("anthropic.Anthropic") as mock_cls:
+            mock_client = MagicMock()
+            mock_client.messages.create.side_effect = RuntimeError(f"Auth failure with token {secret_key}")
+            mock_cls.return_value = mock_client
+
+            res = ap.evaluate(dummy_img, "test prompt", "Yes", QuestionType.CONNECTIVITY_EXISTS)
+            assert res.status == "API_ERROR"
+            assert res.error_message is not None
+            assert secret_key not in res.error_message
+            assert "REDACTED" in res.error_message
+
+def test_multi_model_arena_runner_overview_and_simulation():
+    runner = MultiModelArenaRunner()
+    overview = runner.get_provider_status_overview()
+    assert "Google DeepMind" in overview
+    assert "OpenAI" in overview
+    assert "Anthropic" in overview
+
+    sim_res = runner.get_simulated_result(
+        task_id="circuit_001_conn_direct",
+        provider_name="Simulated-Model",
+        model_name="sim-v1",
+        reference_answer="Yes",
+        question_type=QuestionType.CONNECTIVITY_EXISTS
+    )
+    assert sim_res.status == "SIMULATED"
+    assert "simulation" in sim_res.error_message.lower()

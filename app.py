@@ -16,6 +16,7 @@ from src.physics_simulator import PhysicsSimulator
 from src.adversarial_engine import AdversarialStressEngine
 from src.rlvf_exporter import RLVFDatasetExporter
 from src.symbolic_proof import SymbolicProofEngine
+from src.model_providers import MultiModelArenaRunner, ProviderEvaluationResult
 
 st.set_page_config(
     page_title="SchemAI-Bench | Frontier Visual Task Factory",
@@ -129,6 +130,21 @@ st.markdown("""
         border: 1px solid #ef4444 !important;
         background: rgba(127, 29, 29, 0.25) !important;
         box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+    }
+
+    .model-box-unconfigured {
+        border: 1px dashed #f59e0b !important;
+        background: rgba(120, 53, 15, 0.2) !important;
+    }
+
+    .model-box-simulated {
+        border: 1px solid #64748b !important;
+        background: rgba(30, 41, 59, 0.4) !important;
+    }
+
+    .model-box-idle {
+        border: 1px solid rgba(56, 189, 248, 0.2) !important;
+        background: rgba(15, 23, 42, 0.6) !important;
     }
     
     .metric-value {
@@ -335,41 +351,161 @@ with tab1:
 
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("### 🥊 Frontier Model Head-to-Head Evaluation Arena")
+        st.markdown(
+            "Empirical multimodal evaluation of frontier vision models against zero-LLM deterministic ground truth. "
+            "Evaluations execute on-demand only when triggered via the control panel below."
+        )
+
+        arena_runner = MultiModelArenaRunner()
+        overview = arena_runner.get_provider_status_overview()
+
+        # Provider configuration overview pills
+        cfg_col1, cfg_col2, cfg_col3 = st.columns(3)
+        with cfg_col1:
+            g_cfg = overview.get("Google DeepMind", {}).get("configured", False)
+            g_badge = "🟢 CONFIGURED" if g_cfg else "🟡 NOT CONFIGURED"
+            st.markdown(f"**Google DeepMind (`gemini-1.5-flash`)**: {g_badge}")
+        with cfg_col2:
+            o_cfg = overview.get("OpenAI", {}).get("configured", False)
+            o_badge = "🟢 CONFIGURED" if o_cfg else "🟡 NOT CONFIGURED"
+            st.markdown(f"**OpenAI (`gpt-4o`)**: {o_badge}")
+        with cfg_col3:
+            a_cfg = overview.get("Anthropic", {}).get("configured", False)
+            a_badge = "🟢 CONFIGURED" if a_cfg else "🟡 NOT CONFIGURED"
+            st.markdown(f"**Anthropic (`claude-3-5-sonnet-20241022`)**: {a_badge}")
+
+        # Control panel: Provider selection, Demo simulation toggle, and Run button
+        ctrl_col1, ctrl_col2, ctrl_col3 = st.columns([1.5, 1.2, 1.3])
+        with ctrl_col1:
+            selected_providers = st.multiselect(
+                "Select Models to Audit:",
+                options=["Google DeepMind", "OpenAI", "Anthropic"],
+                default=["Google DeepMind", "OpenAI", "Anthropic"]
+            )
+        with ctrl_col2:
+            use_simulated_fallback = st.checkbox(
+                "Offline Benchmark Baseline (SIMULATED)",
+                value=False,
+                help="Inspect pre-computed offline benchmark results from dataset/evaluation_results.json without sending live API requests."
+            )
+        with ctrl_col3:
+            st.markdown("<div style='margin-top: 28px;'></div>", unsafe_allow_html=True)
+            eval_button = st.button("🥊 RUN EVALUATION", type="primary", use_container_width=True)
+
+        session_eval_key = f"eval_results_{task['task_id']}"
+
+        if eval_button:
+            if not selected_providers:
+                st.warning("Please select at least one provider model to audit.")
+            else:
+                with st.spinner("Executing frontier model vision evaluation..."):
+                    eval_results = {}
+                    for p_name in selected_providers:
+                        if use_simulated_fallback:
+                            # User explicitly requested offline simulated benchmark run
+                            model_id = overview.get(p_name, {}).get("model", "unknown")
+                            eval_results[p_name] = arena_runner.get_simulated_result(
+                                task_id=task["task_id"],
+                                provider_name=p_name,
+                                model_name=model_id,
+                                reference_answer=task["reference_answer"],
+                                question_type=task["question_type"]
+                            )
+                        else:
+                            # Genuine live API run
+                            res_map = arena_runner.evaluate_task(
+                                image_path=img_p,
+                                prompt=task["question_text"],
+                                reference_answer=task["reference_answer"],
+                                question_type=task["question_type"],
+                                selected_providers=[p_name]
+                            )
+                            if p_name in res_map:
+                                eval_results[p_name] = res_map[p_name]
+
+                    st.session_state[session_eval_key] = eval_results
+
+        current_results = st.session_state.get(session_eval_key, {})
+
         m1, m2, m3 = st.columns(3)
-        ref_str = str(task['reference_answer']).strip()
-        
-        with m1:
-            st.markdown("""
-            <div class="model-box model-box-fail">
-                <span class="glow-tag">GOOGLE DEEPMIND</span>
-                <h4 style="color:#f8fafc; margin:6px 0;">Gemini 1.5 Flash</h4>
-                <div style="font-size:1.3rem; font-weight:800; color:#f87171; margin:8px 0;">"Yes, directly connected"</div>
-                <div style="color:#fca5a5; font-size:0.8rem; font-weight:700;">❌ FAILED (Proximity Hallucination)</div>
-                <div style="color:#64748b; font-size:0.75rem; margin-top:6px;">Latency: 0.42s | Confidence: 84%</div>
-            </div>
-            """, unsafe_allow_html=True)
+        cols_map = {
+            "Google DeepMind": (m1, "Gemini 1.5 Flash", overview.get("Google DeepMind", {}).get("configured", False), "GEMINI_API_KEY"),
+            "OpenAI": (m2, "GPT-4o Vision", overview.get("OpenAI", {}).get("configured", False), "OPENAI_API_KEY"),
+            "Anthropic": (m3, "Claude 3.5 Sonnet", overview.get("Anthropic", {}).get("configured", False), "ANTHROPIC_API_KEY")
+        }
 
-        with m2:
-            st.markdown(f"""
-            <div class="model-box model-box-win">
-                <span class="glow-tag">OPENAI</span>
-                <h4 style="color:#f8fafc; margin:6px 0;">GPT-4o Vision</h4>
-                <div style="font-size:1.3rem; font-weight:800; color:#34d399; margin:8px 0;">"{ref_str}"</div>
-                <div style="color:#86efac; font-size:0.8rem; font-weight:700;">✅ PASSED (Verified Accurate)</div>
-                <div style="color:#64748b; font-size:0.75rem; margin-top:6px;">Latency: 0.61s | Confidence: 91%</div>
-            </div>
-            """, unsafe_allow_html=True)
+        for p_name, (col_target, display_name, is_cfg, env_var) in cols_map.items():
+            with col_target:
+                if p_name in current_results:
+                    res = current_results[p_name]
+                    if res.status == "REAL_API":
+                        box_class = "model-box-win" if res.is_correct else "model-box-fail"
+                        status_badge = '<span style="background:#065f46; color:#34d399; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">🟢 REAL API</span>'
+                        verdict = (
+                            '<div style="color:#86efac; font-size:0.8rem; font-weight:700; margin-top:4px;">✅ PASSED (Verified Ground Truth)</div>'
+                            if res.is_correct
+                            else f'<div style="color:#fca5a5; font-size:0.8rem; font-weight:700; margin-top:4px;">❌ FAILED (Expected: {task["reference_answer"]})</div>'
+                        )
+                        raw_display = f'"{res.raw_response}"' if res.raw_response else '*(Empty Response)*'
+                        parsed_display = f"Parsed: <b>{res.parsed_answer}</b>"
+                        meta_info = f"Measured Latency: <b>{res.latency_seconds:.2f}s</b>"
+                    elif res.status == "NOT_CONFIGURED":
+                        box_class = "model-box-unconfigured"
+                        status_badge = '<span style="background:#78350f; color:#fde68a; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">🟡 NOT CONFIGURED</span>'
+                        verdict = f'<div style="color:#fcd34d; font-size:0.8rem; margin-top:4px;">Key <code>{env_var}</code> missing in .env</div>'
+                        raw_display = '*(API Key Not Set)*'
+                        parsed_display = 'Parsed: <b>None</b>'
+                        meta_info = 'Status: Add key to run live multimodal audit'
+                    elif res.status == "API_ERROR":
+                        box_class = "model-box-fail"
+                        status_badge = '<span style="background:#7f1d1d; color:#fca5a5; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">🔴 API ERROR</span>'
+                        verdict = f'<div style="color:#f87171; font-size:0.78rem; margin-top:4px;">{res.error_message}</div>'
+                        raw_display = '*(Request Failed)*'
+                        parsed_display = 'Parsed: <b>None</b>'
+                        meta_info = f"Measured Latency: <b>{res.latency_seconds:.2f}s</b>"
+                    else:  # SIMULATED
+                        box_class = "model-box-simulated"
+                        status_badge = '<span style="background:#1e293b; color:#94a3b8; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">⚪ SIMULATED (OFFLINE)</span>'
+                        verdict = (
+                            '<div style="color:#86efac; font-size:0.8rem; font-weight:700; margin-top:4px;">✅ PASSED (Verified Ground Truth)</div>'
+                            if res.is_correct
+                            else f'<div style="color:#fca5a5; font-size:0.8rem; font-weight:700; margin-top:4px;">❌ FAILED (Expected: {task["reference_answer"]})</div>'
+                        )
+                        raw_display = f'"{res.raw_response}"'
+                        parsed_display = f"Parsed: <b>{res.parsed_answer}</b>"
+                        meta_info = f"Benchmark Latency: <b>{res.latency_seconds:.2f}s</b> (Offline)"
 
-        with m3:
-            st.markdown("""
-            <div class="model-box model-box-fail">
-                <span class="glow-tag">ANTHROPIC</span>
-                <h4 style="color:#f8fafc; margin:6px 0;">Claude 3.5 Sonnet</h4>
-                <div style="font-size:1.3rem; font-weight:800; color:#f87171; margin:8px 0;">"Uncertain / 2 hops"</div>
-                <div style="color:#fca5a5; font-size:0.8rem; font-weight:700;">❌ FAILED (Multi-Hop Degradation)</div>
-                <div style="color:#64748b; font-size:0.75rem; margin-top:6px;">Latency: 0.58s | Confidence: 69%</div>
-            </div>
-            """, unsafe_allow_html=True)
+                    st.markdown(f"""
+                    <div class="model-box {box_class}">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <span class="glow-tag">{p_name.upper()}</span>
+                            {status_badge}
+                        </div>
+                        <h4 style="color:#f8fafc; margin:4px 0 8px 0;">{display_name}</h4>
+                        <div style="font-size:1.05rem; font-weight:700; color:#f1f5f9; min-height:48px; line-height:1.3;">{raw_display}</div>
+                        {verdict}
+                        <div style="color:#94a3b8; font-size:0.78rem; margin-top:6px;">{parsed_display}</div>
+                        <div style="color:#64748b; font-size:0.75rem; margin-top:4px; border-top:1px solid rgba(255,255,255,0.08); padding-top:4px;">{meta_info}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    # Idle / un-evaluated state
+                    cfg_text = "🟢 Key Present" if is_cfg else f"🟡 Missing {env_var}"
+                    st.markdown(f"""
+                    <div class="model-box model-box-idle">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <span class="glow-tag">{p_name.upper()}</span>
+                            <span style="color:#94a3b8; font-size:0.75rem;">{cfg_text}</span>
+                        </div>
+                        <h4 style="color:#f8fafc; margin:4px 0 8px 0;">{display_name}</h4>
+                        <div style="color:#64748b; font-size:0.88rem; min-height:48px; display:flex; align-items:center;">
+                            Awaiting evaluation trigger. Click 'RUN EVALUATION' to test.
+                        </div>
+                        <div style="color:#64748b; font-size:0.75rem; margin-top:12px; border-top:1px solid rgba(255,255,255,0.08); padding-top:4px;">
+                            Model: <code>{overview.get(p_name, {}).get("model", "")}</code>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
 
 # ----------------- TAB 2: PHYSICAL SIMULATOR -----------------
 with tab2:
