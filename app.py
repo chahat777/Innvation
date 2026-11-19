@@ -15,6 +15,7 @@ from src.visual_renderer import VisualRenderer
 from src.physics_simulator import PhysicsSimulator
 from src.adversarial_engine import AdversarialStressEngine
 from src.rlvf_exporter import RLVFDatasetExporter
+from src.symbolic_proof import SymbolicProofEngine
 
 st.set_page_config(
     page_title="SchemAI-Bench | Frontier Visual Task Factory",
@@ -193,6 +194,17 @@ if os.path.exists(pitch_pdf_path):
             use_container_width=True
         )
 
+audit_pdf_path = os.path.join("presentation", "Executive_Model_Safety_Audit.pdf")
+if os.path.exists(audit_pdf_path):
+    with open(audit_pdf_path, "rb") as f:
+        st.sidebar.download_button(
+            "📋 Download Executive Audit (PDF)",
+            f.read(),
+            file_name="Executive_Model_Safety_Audit.pdf",
+            mime="application/pdf",
+            use_container_width=True
+        )
+
 dpo_file_path = os.path.join("dataset", "rlvf_dpo_dataset.jsonl")
 if os.path.exists(dpo_file_path):
     with open(dpo_file_path, "rb") as f:
@@ -254,6 +266,18 @@ with tab1:
                 <div style="color:#a7f3d0; font-size:0.82rem;">{task['visual_evidence_summary']}</div>
             </div>
             """, unsafe_allow_html=True)
+            
+            with st.expander("🔬 View Formal Symbolic Mathematical Proof (Q.E.D.)"):
+                task_seed = abs(hash(task['task_id'])) % 10000
+                engine = GroundTruthEngine(seed=task_seed)
+                G_proof = engine.generate_circuit_topology(num_nodes=7) if task.get("domain") != "floor_plan" else engine.generate_floor_plan_topology(num_rooms=6)
+                
+                qmeta = task.get("graph_metadata", {})
+                u_lbl = qmeta.get("node_u") or qmeta.get("room_u") or "R1"
+                v_lbl = qmeta.get("node_v") or qmeta.get("room_v") or "SW1"
+                
+                proof = SymbolicProofEngine.generate_connectivity_proof(G_proof, u_lbl, v_lbl)
+                st.code(proof, language="text")
 
         img_col1, img_col2 = st.columns([1.2, 1.2])
         img_p = os.path.join("dataset", task["image_filename"])

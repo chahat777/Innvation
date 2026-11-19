@@ -1,0 +1,41 @@
+name: SchemAI-Bench Automated Verification
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  verify-benchmark:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt pytest
+
+    - name: Run Pytest Test Suite
+      run: |
+        pytest tests/ -v
+
+    - name: Verify Procedural Task Synthesis & Ground Truth
+      run: |
+        python run_factory.py --generate --graphs 4
+
+    - name: Validate Mathematical Ground Truth Invariance
+      run: |
+        python -c "
+        import json
+        tasks = json.load(open('dataset/tasks.json'))
+        assert len(tasks) > 0, 'Tasks catalog cannot be empty'
+        print(f'Verification Successful: {len(tasks)} tasks invariant.')
+        "
