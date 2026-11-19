@@ -268,15 +268,15 @@ with tab1:
             """, unsafe_allow_html=True)
             
             with st.expander("🔬 View Formal Symbolic Mathematical Proof (Q.E.D.)"):
-                task_seed = abs(hash(task['task_id'])) % 10000
-                engine = GroundTruthEngine(seed=task_seed)
-                G_proof = engine.generate_circuit_topology(num_nodes=7) if task.get("domain") != "floor_plan" else engine.generate_floor_plan_topology(num_rooms=6)
+                serialized = task.get("graph_metadata", {}).get("serialized_graph")
+                if serialized:
+                    G_proof = GroundTruthEngine.deserialize_graph(serialized)
+                else:
+                    task_seed = abs(hash(task['task_id'])) % 10000
+                    engine = GroundTruthEngine(seed=task_seed)
+                    G_proof = engine.generate_circuit_topology(num_nodes=7) if task.get("domain") != "floor_plan" else engine.generate_floor_plan_topology(num_rooms=6)
                 
-                qmeta = task.get("graph_metadata", {})
-                u_lbl = qmeta.get("node_u") or qmeta.get("room_u") or "R1"
-                v_lbl = qmeta.get("node_v") or qmeta.get("room_v") or "SW1"
-                
-                proof = SymbolicProofEngine.generate_connectivity_proof(G_proof, u_lbl, v_lbl)
+                proof = SymbolicProofEngine.generate_proof_for_task(task, G_proof)
                 st.code(proof, language="text")
 
         img_col1, img_col2 = st.columns([1.2, 1.2])
@@ -307,16 +307,16 @@ with tab1:
                 status_text.empty()
                 prog.empty()
 
-                task_seed = abs(hash(task['task_id'])) % 10000
-                engine = GroundTruthEngine(seed=task_seed)
+                serialized = task.get("graph_metadata", {}).get("serialized_graph")
+                if serialized:
+                    G_diag = GroundTruthEngine.deserialize_graph(serialized)
+                else:
+                    task_seed = abs(hash(task['task_id'])) % 10000
+                    engine = GroundTruthEngine(seed=task_seed)
+                    G_diag = engine.generate_floor_plan_topology(num_rooms=6) if task.get("domain") == "floor_plan" else engine.generate_circuit_topology(num_nodes=7)
+
                 renderer = VisualRenderer(os.path.join("dataset", "images"))
                 diag_filename = f"diag_{task['task_id']}.png"
-
-                if task.get("domain") == "floor_plan":
-                    G_diag = engine.generate_floor_plan_topology(num_rooms=6)
-                else:
-                    G_diag = engine.generate_circuit_topology(num_nodes=7)
-
                 diag_path = renderer.render_ai_perception_overlay(
                     G_diag, diag_filename, task.get("graph_metadata", {})
                 )
@@ -464,7 +464,8 @@ with tab3:
                 AdversarialStressEngine.apply_field_creases_and_wear(base_img, adv_out)
                 st.image(Image.open(adv_out), caption="Level 3: Workshop Fold & Wear", use_container_width=True)
             elif "Level 4" in deg_type:
-                st.image(Image.open(base_img), caption="Level 4: Adversarial Jumper Bypass", use_container_width=True)
+                AdversarialStressEngine.apply_overpass_bridge_trap(base_img, adv_out)
+                st.image(Image.open(adv_out), caption="Level 4: Adversarial Jumper Bypass Overpass (Non-Contacting Wire Crossing)", use_container_width=True)
             else:
                 st.image(Image.open(base_img), caption="Level 1: Native CAD", use_container_width=True)
 
@@ -532,12 +533,23 @@ with tab5:
 
         with chart2:
             st.markdown("#### 🕸️ Multimodal Capability Radar")
-            rcats = ["Spatial Proximity", "Dense Counting", "Multi-Hop Traversal", "Physical Causality"]
-            rvals = [25, 18.7, 20, 22]
+            b_data = res.get("category_breakdown", {})
+            if b_data:
+                rcats = ["Direct Connectivity", "Component Counting", "Multi-Hop Traversal", "Neighbor Identification"]
+                rvals = [
+                    float(b_data.get("connectivity_exists", {}).get("accuracy_pct", 0.0)),
+                    float(b_data.get("component_count", {}).get("accuracy_pct", 0.0)),
+                    float(b_data.get("shortest_path_length", {}).get("accuracy_pct", 0.0)),
+                    float(b_data.get("neighbor_id", {}).get("accuracy_pct", 0.0))
+                ]
+            else:
+                rcats = ["Direct Connectivity", "Component Counting", "Multi-Hop Traversal", "Neighbor Identification"]
+                rvals = [0.0, 0.0, 0.0, 0.0]
+
             frad = go.Figure()
             frad.add_trace(go.Scatterpolar(
                 r=rvals + [rvals[0]], theta=rcats + [rcats[0]],
-                fill='toself', name='Frontier VLM', line_color='#38bdf8'
+                fill='toself', name=res.get("model_name", "Evaluated VLM"), line_color='#38bdf8'
             ))
             frad.update_layout(
                 polar=dict(radialaxis=dict(visible=True, range=[0, 100])),

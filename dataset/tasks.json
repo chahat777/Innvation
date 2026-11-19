@@ -11,7 +11,112 @@
     "graph_metadata": {
       "node_u": "R1",
       "node_v": "SW1",
-      "is_direct": true
+      "is_direct": true,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R3",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "R2",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "C1",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -25,7 +130,112 @@
     "visual_evidence_summary": "Count of Diode components in graph: 0.",
     "graph_metadata": {
       "target_type": "Diode",
-      "count": 0
+      "count": 0,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R3",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "R2",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "C1",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -44,7 +254,112 @@
       "path": [
         "R1",
         "SW1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R3",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "R2",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "C1",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -66,7 +381,112 @@
         "SW1",
         "C2",
         "R3"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R3",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "R2",
+            "target_label": "R3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "C1",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -81,7 +501,128 @@
     "graph_metadata": {
       "room_u": "LOB-1",
       "room_v": "CAF-1",
-      "direct_door": false
+      "direct_door": false,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "LOB-4",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "LOB-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 6,
+            "source_label": "LOB-2",
+            "target_label": "LOB-4",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -94,7 +635,128 @@
     "image_filename": "images\\floor_plan_002_43.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 1.",
     "graph_metadata": {
-      "exit_count": 1
+      "exit_count": 1,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "LOB-4",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "LOB-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 6,
+            "source_label": "LOB-2",
+            "target_label": "LOB-4",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -109,7 +771,128 @@
     "graph_metadata": {
       "source": "LOB-1",
       "destination": "CAF-1",
-      "transitions": 2
+      "transitions": 2,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "LOB-4",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "LOB-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 6,
+            "source_label": "LOB-2",
+            "target_label": "LOB-4",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -124,7 +907,112 @@
     "graph_metadata": {
       "node_u": "GND2",
       "node_v": "BAT1",
-      "is_direct": true
+      "is_direct": true,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "GND2",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "GND3",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "BAT1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "SW1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "L1",
+            "target_label": "GND2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -138,7 +1026,112 @@
     "visual_evidence_summary": "Count of Inductor components in graph: 1.",
     "graph_metadata": {
       "target_type": "Inductor",
-      "count": 1
+      "count": 1,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "GND2",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "GND3",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "BAT1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "SW1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "L1",
+            "target_label": "GND2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -157,7 +1150,112 @@
       "path": [
         "GND2",
         "BAT1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "GND2",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "GND3",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "BAT1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "SW1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "L1",
+            "target_label": "GND2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -179,7 +1277,112 @@
         "L1",
         "GND1",
         "BAT1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "GND2",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "GND3",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "BAT1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "SW1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "GND2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "GND3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "L1",
+            "target_label": "GND2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -194,7 +1397,144 @@
     "graph_metadata": {
       "room_u": "CONF-1",
       "room_v": "CONF-2",
-      "direct_door": true
+      "direct_door": true,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 8,
+        "num_edges": 8,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "OFF-2",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-3",
+            "type": "Office",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "CONF-2",
+            "type": "Conference",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "CONF-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "CONF-1",
+            "target_label": "OFF-3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "CONF-1",
+            "target_label": "CONF-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 7,
+            "source_label": "OFF-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 6,
+            "source_label": "OFF-1",
+            "target_label": "CONF-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 7,
+            "source_label": "OFF-2",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -207,7 +1547,144 @@
     "image_filename": "images\\floor_plan_004_45.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
     "graph_metadata": {
-      "exit_count": 2
+      "exit_count": 2,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 8,
+        "num_edges": 8,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "OFF-2",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-3",
+            "type": "Office",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "CONF-2",
+            "type": "Conference",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "CONF-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "CONF-1",
+            "target_label": "OFF-3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "CONF-1",
+            "target_label": "CONF-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 7,
+            "source_label": "OFF-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 6,
+            "source_label": "OFF-1",
+            "target_label": "CONF-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 7,
+            "source_label": "OFF-2",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -222,7 +1699,144 @@
     "graph_metadata": {
       "source": "CONF-1",
       "destination": "CONF-2",
-      "transitions": 1
+      "transitions": 1,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 8,
+        "num_edges": 8,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "OFF-2",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-3",
+            "type": "Office",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "CONF-2",
+            "type": "Conference",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "CONF-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "CONF-1",
+            "target_label": "OFF-3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "CONF-1",
+            "target_label": "CONF-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 7,
+            "source_label": "OFF-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 6,
+            "source_label": "OFF-1",
+            "target_label": "CONF-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 7,
+            "source_label": "OFF-2",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -237,7 +1851,160 @@
     "graph_metadata": {
       "node_u": "BAT1",
       "node_v": "C1",
-      "is_direct": false
+      "is_direct": false,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "GND1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "BAT1",
+            "target_label": "BAT2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 8,
+            "source_label": "R2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 8,
+            "source_label": "C1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 7,
+            "target": 8,
+            "source_label": "L1",
+            "target_label": "SW2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -251,7 +2018,160 @@
     "visual_evidence_summary": "Count of Resistor components in graph: 2.",
     "graph_metadata": {
       "target_type": "Resistor",
-      "count": 2
+      "count": 2,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "GND1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "BAT1",
+            "target_label": "BAT2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 8,
+            "source_label": "R2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 8,
+            "source_label": "C1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 7,
+            "target": 8,
+            "source_label": "L1",
+            "target_label": "SW2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -272,7 +2192,160 @@
         "R2",
         "SW2",
         "C1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "GND1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "BAT1",
+            "target_label": "BAT2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 8,
+            "source_label": "R2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 8,
+            "source_label": "C1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 7,
+            "target": 8,
+            "source_label": "L1",
+            "target_label": "SW2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -292,7 +2365,160 @@
       "valid_neighbors": [
         "R2",
         "BAT2"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "GND1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "BAT1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "BAT1",
+            "target_label": "BAT2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 8,
+            "source_label": "R2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 8,
+            "source_label": "C1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 7,
+            "target": 8,
+            "source_label": "L1",
+            "target_label": "SW2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -307,7 +2533,89 @@
     "graph_metadata": {
       "room_u": "EXIT-2",
       "room_v": "LOB-1",
-      "direct_door": true
+      "direct_door": true,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 5,
+        "num_edges": 4,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "CAF-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-2",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -320,7 +2628,89 @@
     "image_filename": "images\\floor_plan_006_47.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
     "graph_metadata": {
-      "exit_count": 2
+      "exit_count": 2,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 5,
+        "num_edges": 4,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "CAF-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-2",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -335,7 +2725,89 @@
     "graph_metadata": {
       "source": "EXIT-2",
       "destination": "LOB-1",
-      "transitions": 1
+      "transitions": 1,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 5,
+        "num_edges": 4,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "CAF-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-2",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -350,7 +2822,144 @@
     "graph_metadata": {
       "node_u": "BAT1",
       "node_v": "SW1",
-      "is_direct": false
+      "is_direct": false,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 8,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "D1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "C1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 6,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "BAT2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -364,7 +2973,144 @@
     "visual_evidence_summary": "Count of Resistor components in graph: 0.",
     "graph_metadata": {
       "target_type": "Resistor",
-      "count": 0
+      "count": 0,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 8,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "D1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "C1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 6,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "BAT2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -384,7 +3130,144 @@
         "BAT1",
         "D1",
         "SW1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 8,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "D1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "C1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 6,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "BAT2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -404,7 +3287,144 @@
       "valid_neighbors": [
         "D1",
         "C1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 8,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "BAT2",
+            "type": "Battery",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "D1",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "C1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 6,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "BAT2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -419,7 +3439,128 @@
     "graph_metadata": {
       "room_u": "EXIT-3",
       "room_v": "CAF-1",
-      "direct_door": false
+      "direct_door": false,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "EXIT-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "CONF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "EXIT-3",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -432,7 +3573,128 @@
     "image_filename": "images\\floor_plan_008_49.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 3.",
     "graph_metadata": {
-      "exit_count": 3
+      "exit_count": 3,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "EXIT-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "CONF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "EXIT-3",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -447,7 +3709,128 @@
     "graph_metadata": {
       "source": "EXIT-3",
       "destination": "CAF-1",
-      "transitions": 3
+      "transitions": 3,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "EXIT-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "CONF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "EXIT-3",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -462,7 +3845,151 @@
     "graph_metadata": {
       "node_u": "L1",
       "node_v": "C3",
-      "is_direct": false
+      "is_direct": false,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "L3",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "C3",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "C1",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "C1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "L3",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "L2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "L3",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 6,
+            "source_label": "L3",
+            "target_label": "C2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -476,7 +4003,151 @@
     "visual_evidence_summary": "Count of Diode components in graph: 0.",
     "graph_metadata": {
       "target_type": "Diode",
-      "count": 0
+      "count": 0,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "L3",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "C3",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "C1",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "C1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "L3",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "L2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "L3",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 6,
+            "source_label": "L3",
+            "target_label": "C2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -496,7 +4167,151 @@
         "L1",
         "C1",
         "C3"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "L3",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "C3",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "C1",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "C1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "L3",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "L2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "L3",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 6,
+            "source_label": "L3",
+            "target_label": "C2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -516,7 +4331,151 @@
       "valid_neighbors": [
         "C1",
         "R1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 8,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "L3",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "C2",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "C3",
+            "type": "Capacitor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "C1",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "C1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "C1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "L3",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "L2",
+            "target_label": "C2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "L3",
+            "target_label": "C3",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 6,
+            "source_label": "L3",
+            "target_label": "C2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -531,7 +4490,119 @@
     "graph_metadata": {
       "room_u": "LOB-1",
       "room_v": "LOB-2",
-      "direct_door": false
+      "direct_door": false,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-2",
+            "target_label": "LOB-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -544,7 +4615,119 @@
     "image_filename": "images\\floor_plan_010_51.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 3.",
     "graph_metadata": {
-      "exit_count": 3
+      "exit_count": 3,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-2",
+            "target_label": "LOB-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -559,7 +4742,119 @@
     "graph_metadata": {
       "source": "LOB-1",
       "destination": "LOB-2",
-      "transitions": 2
+      "transitions": 2,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 5,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "EXIT-2",
+            "target_label": "LOB-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -574,7 +4869,112 @@
     "graph_metadata": {
       "node_u": "R2",
       "node_v": "D1",
-      "is_direct": true
+      "is_direct": true,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -588,7 +4988,112 @@
     "visual_evidence_summary": "Count of Switch components in graph: 1.",
     "graph_metadata": {
       "target_type": "Switch",
-      "count": 1
+      "count": 1,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -607,7 +5112,112 @@
       "path": [
         "R2",
         "D1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -627,7 +5237,112 @@
       "valid_neighbors": [
         "D1",
         "SW1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "D1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "D1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "D1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "R1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "R2",
+            "target_label": "SW1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -642,7 +5357,112 @@
     "graph_metadata": {
       "room_u": "EXIT-1",
       "room_v": "OFF-1",
-      "direct_door": false
+      "direct_door": false,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "EXIT-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "EXIT-1",
+            "target_label": "CONF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "CONF-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "SRV-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -655,7 +5475,112 @@
     "image_filename": "images\\floor_plan_012_53.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
     "graph_metadata": {
-      "exit_count": 2
+      "exit_count": 2,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "EXIT-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "EXIT-1",
+            "target_label": "CONF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "CONF-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "SRV-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -670,7 +5595,112 @@
     "graph_metadata": {
       "source": "EXIT-1",
       "destination": "OFF-1",
-      "transitions": 3
+      "transitions": 3,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 6,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "CONF-1",
+            "type": "Conference",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "EXIT-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "EXIT-1",
+            "target_label": "CONF-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "CONF-1",
+            "target_label": "SRV-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "SRV-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "OFF-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -685,7 +5715,160 @@
     "graph_metadata": {
       "node_u": "BAT1",
       "node_v": "R2",
-      "is_direct": false
+      "is_direct": false,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "SW3",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "SW3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "R1",
+            "target_label": "D1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 8,
+            "source_label": "D1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "SW1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "D2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "SW3",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -699,7 +5882,160 @@
     "visual_evidence_summary": "Count of Capacitor components in graph: 0.",
     "graph_metadata": {
       "target_type": "Capacitor",
-      "count": 0
+      "count": 0,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "SW3",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "SW3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "R1",
+            "target_label": "D1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 8,
+            "source_label": "D1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "SW1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "D2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "SW3",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -719,7 +6055,160 @@
         "BAT1",
         "R1",
         "R2"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "SW3",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "SW3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "R1",
+            "target_label": "D1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 8,
+            "source_label": "D1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "SW1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "D2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "SW3",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -739,7 +6228,160 @@
       "valid_neighbors": [
         "D1",
         "R1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 9,
+        "num_edges": 9,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "D1",
+            "type": "Diode",
+            "pos": [
+              4.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "BAT1",
+            "type": "Battery",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "D2",
+            "type": "Diode",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "SW2",
+            "type": "Switch",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "R2",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 7,
+            "label": "SW3",
+            "type": "Switch",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 8,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 7,
+            "source_label": "R1",
+            "target_label": "SW3",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "R1",
+            "target_label": "D1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "R1",
+            "target_label": "R2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "R1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 2,
+            "source_label": "D1",
+            "target_label": "BAT1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 8,
+            "source_label": "D1",
+            "target_label": "L1",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "SW1",
+            "target_label": "D2",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "source_label": "D2",
+            "target_label": "SW2",
+            "metadata": {}
+          },
+          {
+            "source": 5,
+            "target": 7,
+            "source_label": "SW2",
+            "target_label": "SW3",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -754,7 +6396,119 @@
     "graph_metadata": {
       "room_u": "EXIT-1",
       "room_v": "EXIT-3",
-      "direct_door": false
+      "direct_door": false,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "LOB-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "LOB-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "CAF-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -767,7 +6521,119 @@
     "image_filename": "images\\floor_plan_014_55.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 3.",
     "graph_metadata": {
-      "exit_count": 3
+      "exit_count": 3,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "LOB-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "LOB-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "CAF-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -782,7 +6648,119 @@
     "graph_metadata": {
       "source": "EXIT-1",
       "destination": "EXIT-3",
-      "transitions": 3
+      "transitions": 3,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 6,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "CAF-1",
+            "type": "Cafeteria",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-3",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 3,
+            "source_label": "LOB-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 4,
+            "source_label": "LOB-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "LOB-1",
+            "target_label": "EXIT-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "EXIT-1",
+            "target_label": "CAF-1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "EXIT-2",
+            "target_label": "EXIT-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "source_label": "CAF-1",
+            "target_label": "LOB-2",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -797,7 +6775,105 @@
     "graph_metadata": {
       "node_u": "C1",
       "node_v": "GND1",
-      "is_direct": true
+      "is_direct": true,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 5,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "L1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "C1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "GND1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "R1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -811,7 +6887,105 @@
     "visual_evidence_summary": "Count of Diode components in graph: 0.",
     "graph_metadata": {
       "target_type": "Diode",
-      "count": 0
+      "count": 0,
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 5,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "L1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "C1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "GND1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "R1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -830,7 +7004,105 @@
       "path": [
         "C1",
         "GND1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 5,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "L1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "C1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "GND1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "R1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -848,7 +7120,105 @@
       "source": "C1",
       "valid_neighbors": [
         "GND1"
-      ]
+      ],
+      "serialized_graph": {
+        "domain": "circuit_schematic",
+        "num_nodes": 6,
+        "num_edges": 5,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "L1",
+            "type": "Inductor",
+            "pos": [
+              4.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "GND1",
+            "type": "Ground",
+            "pos": [
+              4.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "L2",
+            "type": "Inductor",
+            "pos": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "SW1",
+            "type": "Switch",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "C1",
+            "type": "Capacitor",
+            "pos": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "R1",
+            "type": "Resistor",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 1,
+            "source_label": "L1",
+            "target_label": "GND1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "L1",
+            "target_label": "R1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "GND1",
+            "target_label": "C1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 3,
+            "source_label": "GND1",
+            "target_label": "SW1",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 5,
+            "source_label": "L2",
+            "target_label": "R1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -863,7 +7233,128 @@
     "graph_metadata": {
       "room_u": "EXIT-1",
       "room_v": "OFF-1",
-      "direct_door": false
+      "direct_door": false,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "SRV-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "SRV-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "LOB-2",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "LOB-3",
+            "target_label": "OFF-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -876,7 +7367,128 @@
     "image_filename": "images\\floor_plan_016_57.png",
     "visual_evidence_summary": "Total designated emergency exits on floor plan: 2.",
     "graph_metadata": {
-      "exit_count": 2
+      "exit_count": 2,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "SRV-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "SRV-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "LOB-2",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "LOB-3",
+            "target_label": "OFF-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   },
   {
@@ -891,7 +7503,128 @@
     "graph_metadata": {
       "source": "EXIT-1",
       "destination": "OFF-1",
-      "transitions": 2
+      "transitions": 2,
+      "serialized_graph": {
+        "domain": "floor_plan",
+        "num_nodes": 7,
+        "num_edges": 7,
+        "nodes": [
+          {
+            "id": 0,
+            "label": "SRV-1",
+            "type": "Server_Room",
+            "pos": [
+              3.0,
+              3.0
+            ]
+          },
+          {
+            "id": 1,
+            "label": "EXIT-1",
+            "type": "Emergency_Exit",
+            "pos": [
+              3.0,
+              1.0
+            ]
+          },
+          {
+            "id": 2,
+            "label": "LOB-1",
+            "type": "Lobby",
+            "pos": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "id": 3,
+            "label": "LOB-2",
+            "type": "Lobby",
+            "pos": [
+              2.0,
+              3.0
+            ]
+          },
+          {
+            "id": 4,
+            "label": "LOB-3",
+            "type": "Lobby",
+            "pos": [
+              3.0,
+              2.0
+            ]
+          },
+          {
+            "id": 5,
+            "label": "EXIT-2",
+            "type": "Emergency_Exit",
+            "pos": [
+              1.0,
+              3.0
+            ]
+          },
+          {
+            "id": 6,
+            "label": "OFF-1",
+            "type": "Office",
+            "pos": [
+              2.0,
+              2.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "source": 0,
+            "target": 6,
+            "source_label": "SRV-1",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 5,
+            "source_label": "SRV-1",
+            "target_label": "EXIT-2",
+            "metadata": {}
+          },
+          {
+            "source": 0,
+            "target": 2,
+            "source_label": "SRV-1",
+            "target_label": "LOB-1",
+            "metadata": {}
+          },
+          {
+            "source": 1,
+            "target": 4,
+            "source_label": "EXIT-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 2,
+            "target": 4,
+            "source_label": "LOB-1",
+            "target_label": "LOB-3",
+            "metadata": {}
+          },
+          {
+            "source": 3,
+            "target": 6,
+            "source_label": "LOB-2",
+            "target_label": "OFF-1",
+            "metadata": {}
+          },
+          {
+            "source": 4,
+            "target": 6,
+            "source_label": "LOB-3",
+            "target_label": "OFF-1",
+            "metadata": {}
+          }
+        ]
+      }
     }
   }
 ]

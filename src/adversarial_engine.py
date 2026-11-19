@@ -66,6 +66,36 @@ class AdversarialStressEngine:
             res_img.save(output_path)
             return output_path
 
+    @classmethod
+    def apply_overpass_bridge_trap(cls, image_path: str, output_path: str) -> str:
+        """
+        Adversarial Level 4 Transformation:
+        Draws an electronic bridge jumper 'overpass' across two orthogonal conductive lines
+        in the center of the diagram. The wires cross without contact.
+        Tests if the VLM hallucinates a 4-way solder junction.
+        Preserves original image and saves modified artifact to output_path.
+        """
+        with Image.open(image_path).convert("RGB") as img:
+            draw = ImageDraw.Draw(img)
+            w, h = img.size
+            cx, cy = w // 2, h // 2
+            
+            line_color = (56, 189, 248) # Cyan blueprint wire
+            # Vertical underlying trace
+            draw.line([(cx, cy - 80), (cx, cy + 80)], fill=line_color, width=3)
+            
+            # Horizontal jumping trace over vertical
+            cls.draw_overpass_bridge_trap(
+                draw=draw,
+                p1=(cx - 80, cy),
+                p2=(cx + 80, cy),
+                cross_pos=(cx, cy),
+                color=line_color
+            )
+            
+            img.save(output_path)
+            return output_path
+
     @staticmethod
     def draw_overpass_bridge_trap(draw, p1: tuple[float, float], p2: tuple[float, float], cross_pos: tuple[float, float], color: tuple[int, int, int]):
         """

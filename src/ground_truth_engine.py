@@ -28,12 +28,60 @@ class GroundTruthEngine:
     """
     Deterministically constructs topological graphs and computes mathematically
     verifiable reference answers before images are rendered.
-    Supports both Circuit Schematics and Architectural Floor Plans.
+    Supports both Circuit Schematics and Architectural Floor Plans with full graph serialization.
     """
 
     def __init__(self, seed: int = None):
         if seed is not None:
             random.seed(seed)
+
+    @staticmethod
+    def serialize_graph(G: nx.Graph) -> Dict[str, Any]:
+        """Serializes a NetworkX graph topology with complete node, edge, and coordinate metadata."""
+        nodes_list = []
+        for n, d in G.nodes(data=True):
+            pos = d.get('pos', (0.0, 0.0))
+            nodes_list.append({
+                "id": n,
+                "label": str(d.get('label', n)),
+                "type": str(d.get('type', 'Component')),
+                "pos": [float(pos[0]), float(pos[1])]
+            })
+            
+        edges_list = []
+        for u, v, edata in G.edges(data=True):
+            edges_list.append({
+                "source": u,
+                "target": v,
+                "source_label": str(G.nodes[u].get('label', u)),
+                "target_label": str(G.nodes[v].get('label', v)),
+                "metadata": {str(k): v for k, v in edata.items() if k not in ['source', 'target']}
+            })
+            
+        return {
+            "domain": str(G.graph.get("domain", TaskDomain.CIRCUIT_SCHEMATIC.value)),
+            "num_nodes": len(nodes_list),
+            "num_edges": len(edges_list),
+            "nodes": nodes_list,
+            "edges": edges_list
+        }
+
+    @staticmethod
+    def deserialize_graph(data: Dict[str, Any]) -> nx.Graph:
+        """Reconstructs the exact NetworkX graph with full coordinates, labels, and types."""
+        G = nx.Graph()
+        G.graph["domain"] = data.get("domain", TaskDomain.CIRCUIT_SCHEMATIC.value)
+        for n in data.get("nodes", []):
+            pos = tuple(n.get("pos", [0.0, 0.0]))
+            G.add_node(
+                n["id"],
+                label=n["label"],
+                type=n["type"],
+                pos=pos
+            )
+        for e in data.get("edges", []):
+            G.add_edge(e["source"], e["target"], **e.get("metadata", {}))
+        return G
 
     def generate_circuit_topology(self, num_nodes: int = 7) -> nx.Graph:
         """Generates a connected planar circuit topology on a 2D integer grid."""
@@ -115,6 +163,7 @@ class GroundTruthEngine:
         """Creates diverse verifiable questions based on circuit graph topology."""
         tasks = []
         nodes = list(G.nodes())
+        serialized_graph = self.serialize_graph(G)
         
         # 1. Connectivity Verification (Yes/No)
         u, v = random.sample(nodes, 2)
@@ -131,7 +180,12 @@ class GroundTruthEngine:
             answer_format="boolean",
             image_filename="",
             visual_evidence_summary=f"Direct wiring check between {label_u} at {G.nodes[u]['pos']} and {label_v} at {G.nodes[v]['pos']}. Edge exists: {is_direct}.",
-            graph_metadata={"node_u": label_u, "node_v": label_v, "is_direct": is_direct}
+            graph_metadata={
+                "node_u": label_u,
+                "node_v": label_v,
+                "is_direct": is_direct,
+                "serialized_graph": serialized_graph
+            }
         )
         tasks.append(q1)
 
@@ -147,7 +201,11 @@ class GroundTruthEngine:
             answer_format="integer",
             image_filename="",
             visual_evidence_summary=f"Count of {target_type} components in graph: {actual_count}.",
-            graph_metadata={"target_type": target_type, "count": actual_count}
+            graph_metadata={
+                "target_type": target_type,
+                "count": actual_count,
+                "serialized_graph": serialized_graph
+            }
         )
         tasks.append(q2)
 
@@ -164,7 +222,13 @@ class GroundTruthEngine:
                 answer_format="integer",
                 image_filename="",
                 visual_evidence_summary=f"Shortest path from {label_u} to {label_v}: {' -> '.join([G.nodes[n]['label'] for n in path])}. Total hops: {hop_count}.",
-                graph_metadata={"source": label_u, "target": label_v, "hops": hop_count, "path": [G.nodes[n]['label'] for n in path]}
+                graph_metadata={
+                    "source": label_u,
+                    "target": label_v,
+                    "hops": hop_count,
+                    "path": [G.nodes[n]['label'] for n in path],
+                    "serialized_graph": serialized_graph
+                }
             )
             tasks.append(q3)
 
@@ -180,7 +244,11 @@ class GroundTruthEngine:
                 answer_format="string",
                 image_filename="",
                 visual_evidence_summary=f"Neighbors of {label_u}: {[G.nodes[n]['label'] for n in neighbors]}.",
-                graph_metadata={"source": label_u, "valid_neighbors": [G.nodes[n]['label'] for n in neighbors]}
+                graph_metadata={
+                    "source": label_u,
+                    "valid_neighbors": [G.nodes[n]['label'] for n in neighbors],
+                    "serialized_graph": serialized_graph
+                }
             )
             tasks.append(q4)
 
@@ -190,6 +258,8 @@ class GroundTruthEngine:
         """Creates verifiable spatial and egress questions based on architectural floor plans."""
         tasks = []
         nodes = list(G.nodes())
+        serialized_graph = self.serialize_graph(G)
+        
         u, v = random.sample(nodes, 2)
         label_u = G.nodes[u]['label']
         label_v = G.nodes[v]['label']
@@ -205,7 +275,12 @@ class GroundTruthEngine:
             answer_format="boolean",
             image_filename="",
             visual_evidence_summary=f"Direct doorway between {label_u} and {label_v}. Edge exists: {is_adjacent}.",
-            graph_metadata={"room_u": label_u, "room_v": label_v, "direct_door": is_adjacent}
+            graph_metadata={
+                "room_u": label_u,
+                "room_v": label_v,
+                "direct_door": is_adjacent,
+                "serialized_graph": serialized_graph
+            }
         )
         tasks.append(q1)
 
@@ -220,7 +295,10 @@ class GroundTruthEngine:
             answer_format="integer",
             image_filename="",
             visual_evidence_summary=f"Total designated emergency exits on floor plan: {exit_count}.",
-            graph_metadata={"exit_count": exit_count}
+            graph_metadata={
+                "exit_count": exit_count,
+                "serialized_graph": serialized_graph
+            }
         )
         tasks.append(q2)
 
@@ -237,7 +315,12 @@ class GroundTruthEngine:
                 answer_format="integer",
                 image_filename="",
                 visual_evidence_summary=f"Shortest route from {label_u} to {label_v}: {' -> '.join([G.nodes[n]['label'] for n in path])}. Transitions: {room_transitions}.",
-                graph_metadata={"source": label_u, "destination": label_v, "transitions": room_transitions}
+                graph_metadata={
+                    "source": label_u,
+                    "destination": label_v,
+                    "transitions": room_transitions,
+                    "serialized_graph": serialized_graph
+                }
             )
             tasks.append(q3)
 

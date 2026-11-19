@@ -235,7 +235,7 @@ class VisualRenderer:
         ax.grid(True, which='both', color="#1E293B", linestyle='-', linewidth=0.5, alpha=0.6)
         
         # Diagnostic Header Overlay
-        ax.text(0.2, 3.8, "🔬 AI VISION DIAGNOSTIC: SPATIAL PERCEPTION AUDIT", fontsize=9, fontweight='bold', color="#38BDF8")
+        ax.text(0.2, 3.8, "[DIAGNOSTIC] AI VISION DIAGNOSTIC: SPATIAL PERCEPTION AUDIT", fontsize=9, fontweight='bold', color="#38BDF8")
         ax.text(0.2, 3.65, "GREEN = Ground-Truth Physical Trace | RED LASER = Proximity Hallucination", fontsize=7.5, color="#94A3B8")
 
         # Draw True Wires in Neon Green/Cyan
@@ -259,15 +259,25 @@ class VisualRenderer:
             ax.add_patch(rect)
             ax.text(pos[0], pos[1], f"{label}\n[{comp_type[:3]}]", fontsize=7, fontweight='bold', color="#F8FAFC", ha='center', va='center', zorder=6)
 
-        # Highlight hallucinated short-circuit if applicable
-        if len(nodes) >= 2:
-            u_node = nodes[0]
-            v_node = nodes[1]
+        # Highlight hallucinated short-circuit if target nodes are disconnected
+        u_label = task_meta.get("node_u") or task_meta.get("room_u")
+        v_label = task_meta.get("node_v") or task_meta.get("room_v")
+        
+        u_node = next((n for n, d in G.nodes(data=True) if d.get('label') == u_label), None)
+        v_node = next((n for n, d in G.nodes(data=True) if d.get('label') == v_label), None)
+        
+        if u_node is not None and v_node is not None and not G.has_edge(u_node, v_node):
             u_pos = G.nodes[u_node]['pos']
             v_pos = G.nodes[v_node]['pos']
             ax.plot([u_pos[0], v_pos[0]], [u_pos[1], v_pos[1]], color="#EF4444", lw=3.0, linestyle='--', zorder=4)
             mid = ((u_pos[0] + v_pos[0])/2, (u_pos[1] + v_pos[1])/2)
-            ax.text(mid[0], mid[1] + 0.12, "⚠️ DETECTED PROXIMITY SHORT-CIRCUIT", fontsize=7.5, fontweight='bold', color="#EF4444", ha='center', bbox=dict(boxstyle="round,pad=0.2", facecolor="#450A0A", edgecolor="#EF4444", lw=1))
+            ax.text(mid[0], mid[1] + 0.12, f"⚠️ PROXIMITY SHORT: {u_label} <-> {v_label}", fontsize=7.5, fontweight='bold', color="#EF4444", ha='center', bbox=dict(boxstyle="round,pad=0.2", facecolor="#450A0A", edgecolor="#EF4444", lw=1))
+        elif u_node is not None and v_node is not None and G.has_edge(u_node, v_node):
+            # If directly connected, emphasize verified physical connection
+            u_pos = G.nodes[u_node]['pos']
+            v_pos = G.nodes[v_node]['pos']
+            mid = ((u_pos[0] + v_pos[0])/2, (u_pos[1] + v_pos[1])/2)
+            ax.text(mid[0], mid[1] + 0.12, f"✓ VERIFIED TRACE: {u_label} <-> {v_label}", fontsize=7.5, fontweight='bold', color="#10B981", ha='center', bbox=dict(boxstyle="round,pad=0.2", facecolor="#064E3B", edgecolor="#10B981", lw=1))
 
         filepath = os.path.join(self.output_dir, filename)
         plt.tight_layout()

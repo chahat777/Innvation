@@ -44,7 +44,7 @@
       "parsed_answer": 4,
       "reference_answer": 0,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "COUNT_ERROR_DIFF_4",
       "raw_response": "There are 4 components of this type visible."
     },
@@ -55,7 +55,7 @@
       "parsed_answer": 3,
       "reference_answer": 1,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "COUNT_ERROR_DIFF_2",
       "raw_response": "3 hops"
     },
@@ -81,7 +81,7 @@
       "parsed_answer": "uncertain based on the visual schematic.",
       "reference_answer": "No",
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "CONNECTIVITY_MISMATCH",
       "raw_response": "Uncertain based on the visual schematic."
     },
@@ -103,7 +103,7 @@
       "parsed_answer": null,
       "reference_answer": 2,
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "NO_NUMERICAL_VALUE",
       "raw_response": "Uncertain based on the visual schematic."
     },
@@ -114,7 +114,7 @@
       "parsed_answer": "No",
       "reference_answer": "Yes",
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "CONNECTIVITY_MISMATCH",
       "raw_response": "No"
     },
@@ -136,7 +136,7 @@
       "parsed_answer": 3,
       "reference_answer": 1,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "COUNT_ERROR_DIFF_2",
       "raw_response": "3 hops"
     },
@@ -151,7 +151,7 @@
         "BAT1"
       ],
       "is_correct": false,
-      "latency_seconds": 0.055,
+      "latency_seconds": 0.051,
       "error_category": "WRONG_COMPONENT_IDENTIFIED",
       "raw_response": "SW1"
     },
@@ -162,7 +162,7 @@
       "parsed_answer": "uncertain based on the visual schematic.",
       "reference_answer": "Yes",
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "CONNECTIVITY_MISMATCH",
       "raw_response": "Uncertain based on the visual schematic."
     },
@@ -173,7 +173,7 @@
       "parsed_answer": 4,
       "reference_answer": 2,
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "COUNT_ERROR_DIFF_2",
       "raw_response": "There are 4 components of this type visible."
     },
@@ -195,7 +195,7 @@
       "parsed_answer": "Yes",
       "reference_answer": "No",
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "CONNECTIVITY_MISMATCH",
       "raw_response": "Yes"
     },
@@ -206,7 +206,7 @@
       "parsed_answer": 4,
       "reference_answer": 2,
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "COUNT_ERROR_DIFF_2",
       "raw_response": "There are 4 components of this type visible."
     },
@@ -217,7 +217,7 @@
       "parsed_answer": 1,
       "reference_answer": 3,
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "COUNT_ERROR_DIFF_2",
       "raw_response": "1 hops"
     },
@@ -231,7 +231,7 @@
         "BAT2"
       ],
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "WRONG_COMPONENT_IDENTIFIED",
       "raw_response": "GND1"
     },
@@ -264,7 +264,7 @@
       "parsed_answer": null,
       "reference_answer": 1,
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "NO_NUMERICAL_VALUE",
       "raw_response": "Uncertain based on the visual schematic."
     },
@@ -275,7 +275,7 @@
       "parsed_answer": "No",
       "reference_answer": "No",
       "is_correct": true,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.053,
       "error_category": null,
       "raw_response": "No"
     },
@@ -286,7 +286,7 @@
       "parsed_answer": 1,
       "reference_answer": 0,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.056,
       "error_category": "COUNT_ERROR_DIFF_1",
       "raw_response": "There are 1 components of this type visible."
     },
@@ -297,7 +297,7 @@
       "parsed_answer": 3,
       "reference_answer": 2,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.056,
       "error_category": "COUNT_ERROR_DIFF_1",
       "raw_response": "3 hops"
     },
@@ -311,7 +311,7 @@
         "C1"
       ],
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.052,
       "error_category": "WRONG_COMPONENT_IDENTIFIED",
       "raw_response": "SW1"
     },
@@ -322,7 +322,7 @@
       "parsed_answer": "uncertain based on the visual schematic.",
       "reference_answer": "No",
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "CONNECTIVITY_MISMATCH",
       "raw_response": "Uncertain based on the visual schematic."
     },
@@ -344,7 +344,7 @@
       "parsed_answer": null,
       "reference_answer": 3,
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.053,
       "error_category": "NO_NUMERICAL_VALUE",
       "raw_response": "Uncertain based on the visual schematic."
     },
@@ -355,7 +355,7 @@
       "parsed_answer": "No",
       "reference_answer": "No",
       "is_correct": true,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": null,
       "raw_response": "No"
     },
@@ -366,7 +366,7 @@
       "parsed_answer": 1,
       "reference_answer": 0,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "COUNT_ERROR_DIFF_1",
       "raw_response": "There are 1 components of this type visible."
     },
@@ -402,7 +402,7 @@
       "parsed_answer": "uncertain based on the visual schematic.",
       "reference_answer": "No",
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "CONNECTIVITY_MISMATCH",
       "raw_response": "Uncertain based on the visual schematic."
     },
@@ -493,7 +493,7 @@
       "parsed_answer": 2,
       "reference_answer": 2,
       "is_correct": true,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": null,
       "raw_response": "There are 2 components of this type visible."
     },
@@ -526,7 +526,7 @@
       "parsed_answer": 1,
       "reference_answer": 0,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.05,
       "error_category": "COUNT_ERROR_DIFF_1",
       "raw_response": "There are 1 components of this type visible."
     },
@@ -551,7 +551,7 @@
         "R1"
       ],
       "is_correct": true,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": null,
       "raw_response": "D1"
     },
@@ -595,7 +595,7 @@
       "parsed_answer": "No",
       "reference_answer": "Yes",
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "CONNECTIVITY_MISMATCH",
       "raw_response": "No"
     },
@@ -606,7 +606,7 @@
       "parsed_answer": 2,
       "reference_answer": 0,
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "COUNT_ERROR_DIFF_2",
       "raw_response": "There are 2 components of this type visible."
     },
@@ -630,7 +630,7 @@
         "GND1"
       ],
       "is_correct": false,
-      "latency_seconds": 0.05,
+      "latency_seconds": 0.051,
       "error_category": "WRONG_COMPONENT_IDENTIFIED",
       "raw_response": "L1"
     },
@@ -652,7 +652,7 @@
       "parsed_answer": 4,
       "reference_answer": 2,
       "is_correct": false,
-      "latency_seconds": 0.051,
+      "latency_seconds": 0.056,
       "error_category": "COUNT_ERROR_DIFF_2",
       "raw_response": "There are 4 components of this type visible."
     },
