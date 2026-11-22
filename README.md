@@ -26,31 +26,31 @@ Frontier Multimodal AI models (such as Gemini 1.5/2.0, GPT-4o, and Claude 3.5 So
 ```mermaid
 flowchart TD
     subgraph S1 ["1. Multi-Domain Graph Topology Engine"]
-        A[Random Planar Graph Generator] --> B1[Domain 1: Circuit Schematics<br/>Resistors, Capacitors, Inductors, Switches]
-        A --> B2[Domain 2: Architectural Floor Plans<br/>Rooms, Doorways, Emergency Exits]
-        B1 & B2 --> C[Compute Manhattan Orthogonal Wiring / Corridors]
+        A["Random Planar Graph Generator"] --> B1["Domain 1: Circuit Schematics<br/>Resistors, Capacitors, Inductors, Switches"]
+        A --> B2["Domain 2: Architectural Floor Plans<br/>Rooms, Doorways, Emergency Exits"]
+        B1 & B2 --> C["Compute Manhattan Orthogonal Wiring / Corridors"]
     end
 
     subgraph S2 ["2. Mathematical Ground Truth Engine"]
-        C --> D[Topological Solver Engine]
-        D -->|BFS / Adjacency| E[Connectivity & Doorway Tasks (Yes/No)]
-        D -->|Node Frequency| F[Component & Exit Counting Tasks]
-        D -->|Dijkstra Algorithm| G[Shortest Wire Hops / Egress Tasks]
+        C --> D["Topological Solver Engine"]
+        D -->|BFS / Adjacency| E["Connectivity & Doorway Tasks (Yes/No)"]
+        D -->|Node Frequency| F["Component & Exit Counting Tasks"]
+        D -->|Dijkstra Algorithm| G["Shortest Wire Hops / Egress Tasks"]
     end
 
     subgraph S3 ["3. High-Fidelity Visual Renderer"]
         C --> H[Pillow / Matplotlib Technical Engine]
-        H --> I[Engineering Grid & Title Blocks]
-        I --> J[Apply Optical Sensor Distortion & Grain]
-        J --> K[(Synthetic Dataset & Schematics)]
+        H --> I["Engineering Grid & Title Blocks"]
+        I --> J["Apply Optical Sensor Distortion & Grain"]
+        J --> K[("Synthetic Dataset & Schematics")]
     end
 
     subgraph S4 ["4. Deterministic Evaluation Harness"]
-        K --> L[Multimodal Model API / Gemini]
-        L --> M[Raw Model Response]
-        M --> N[Deterministic Answer Verifier]
+        K --> L["Multimodal Model API / Gemini"]
+        L --> M["Raw Model Response"]
+        M --> N["Deterministic Answer Verifier"]
         E & F & G --> N
-        N --> O[Benchmark Reports & Failure Analytics]
+        N --> O["Benchmark Reports & Failure Analytics"]
     end
 ```
 
