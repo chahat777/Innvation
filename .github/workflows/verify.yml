@@ -25,7 +25,7 @@ jobs:
 
     - name: Run Pytest Test Suite
       run: |
-        pytest tests/ -v
+        python -m pytest tests/ -v
 
     - name: Verify Procedural Task Synthesis & Ground Truth
       run: |
