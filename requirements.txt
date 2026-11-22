@@ -8,3 +8,5 @@ streamlit>=1.30.0
 fpdf2>=2.8.0
 tqdm>=4.66.0
 pydantic>=2.5.0
+python-dotenv>=1.0.0
+plotly>=5.18.0
