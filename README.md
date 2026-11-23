@@ -176,4 +176,4 @@ Innvation/
 - **Lead Innovator:** Chahat Kumar
 
 ---
-*Developed with ❤️ for verifiable, safer frontier AI systems.*
+*Developed with ❤️ for verifiable, Chahat Kumar.*
